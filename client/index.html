@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Quiz App</title>
+	<link rel="stylesheet" type="text/css" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+    <!--<link rel="stylesheet" type="text/css" href="../styles/styles.css"/>-->
+        <script src="../bower_components/jquery/dist/jquery.js"></script>
+	<script src="../bower_components/knockout/dist/knockout.js"></script>
+</head>
+<body>
+    <div id="main">
+        <p>Your question: <span data-bind="text: question"></span></p>
+        <p>Your answer: <span data-bind="text: userAnswer"></span></p>
+        <!--<input placeholder="Your answer here." data-bind="event: { change: validate }, valueUpdate: 'afterkeydown', value: answer" />-->
+        <input data-bind="value: userAnswer"/>
+        <br/>
+        <h3 data-bind="text: result, visible: userAnswer"> </h3>
+        <br/>
+        <p>Time Limit:<span data-bind="text: time"></span></p>
+        <button type="button" data-bind="click: getQuestion()">Get the damn thing</button>
+    </div>
+    
+    <!--libs-->
+
+	
+	<!--app code-->
+    <script src="../main.js"></script>
+</body>
+</html>
