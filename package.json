@@ -1,7 +1,7 @@
 {
   "name": "virgo",
   "version": "1.0.0",
-  "description": "",
+  "description": "Quiz web application",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -11,6 +11,15 @@
   "license": "ISC",
   "dependencies": {
     "bower": "^1.4.1",
-    "express": "^4.13.3"
-  }
+    "express": "^4.13.3",
+    "requirejs": "^2.1.20"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/patrick-motard/Virgo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/patrick-motard/Virgo/issues"
+  },
+  "homepage": "https://github.com/patrick-motard/Virgo"
 }
