@@ -4,27 +4,27 @@
 	<meta charset="UTF-8">
 	<title>Quiz App</title>
 	<link rel="stylesheet" type="text/css" href="../bower_components/bootstrap/dist/css/bootstrap.css">
-    <!--<link rel="stylesheet" type="text/css" href="../styles/styles.css"/>-->
- <!--       <script src="../bower_components/jquery/dist/jquery.js"></script>-->
-	<!--<script src="../bower_components/knockout/dist/knockout.js"></script>-->
 </head>
 <body>
     <div id="main">
-        <p>Your question: <span data-bind="text: question"></span></p>
-        <p>Your answer: <span data-bind="text: userAnswer"></span></p>
-        <!--<input placeholder="Your answer here." data-bind="event: { change: validate }, valueUpdate: 'afterkeydown', value: answer" />-->
-        <input data-bind="value: userAnswer"/>
-        <br/>
-        <h3 data-bind="text: result, visible: userAnswer"> </h3>
-        <br/>
-        <p>Time Limit:<span data-bind="text: time"></span></p>
-        <button type="button" data-bind="click: getQuestion()">Get the damn thing</button>
+        <!--<p>Your question: <span data-bind="text: question"></span></p>-->
+        <!--<p>Your answer: <span data-bind="text: userAnswer"></span></p>-->
+        <!--<p>Point Value: <span data-bind="text: pointValue"></span></p>-->
+        <!--<input data-bind="value: userAnswer"/>-->
+        <!--<br/>-->
+        <!--<h3 data-bind="text: result, visible: userAnswer"> </h3>-->
+        <!--<br/>-->
+        <!--<p>Time Limit:<span data-bind="text: time"></span></p>-->
+        <!--<button type="button" data-bind="click: getQuestion()">Get the damn thing</button>-->
+        
+        
+        <ul data-bind="foreach: Questions">
+           <li data-bind="text: $data"></li> 
+        </ul>
+        
+        
     </div>
-    
-    <!--libs-->
-
-	
-	<!--app code-->
-    <script data-main="../main" src="../node_modules/requirejs/require.js"></script>
+	<!--REQUIREJS ENTRY POINT-->
+    <script data-main="../QuizApp/QuizMain" src="../node_modules/requirejs/require.js"></script>
 </body>
 </html>
