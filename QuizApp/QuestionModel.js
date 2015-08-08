@@ -2,7 +2,7 @@ define(['ko', 'CategoryModel'], function(ko, CategoryModel){
     return function QuestionModel(data){
         var self = this;
         self.answer = data.answer;
-        self.question = data.question;
+        self.question = ko.observable(data.question);
         self.value = data.value;
         self.airdate = data.airdate;
         self.created_at = data.created_at;

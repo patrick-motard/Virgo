@@ -3,10 +3,12 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Quiz App</title>
-	<link rel="stylesheet" type="text/css" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="../bower_components/bootstrap/dist/css/bootstrap.css"/>
+	<link rel="stylesheet" type="text/css" href="../styles.css"/>
 </head>
 <body>
     <div id="main">
+
         <!--<p>Your question: <span data-bind="text: question"></span></p>-->
         <!--<p>Your answer: <span data-bind="text: userAnswer"></span></p>-->
         <!--<p>Point Value: <span data-bind="text: pointValue"></span></p>-->
@@ -16,7 +18,13 @@
         <!--<br/>-->
         <!--<p>Time Limit:<span data-bind="text: time"></span></p>-->
         <!--<button type="button" data-bind="click: getQuestion()">Get the damn thing</button>-->
-        
+        <div style="width:200px; height: 300px; border:1px solid black;">
+            <h4>Current Question: </h4><span data-bind="text: CurrentQuestion().question()"></span>
+            <h4>Answer: </h4><span data-bind="text: CurrentQuestion().answer"></span>
+            <br/>
+            <button type="button" data-bind="click: PreviousQuestion()">previous</button>
+            <button type="button" data-bind="click: NextQuestion()">next</button>
+        </div>
         
         <ul data-bind="foreach: Questions">
            <li data-bind="text: $data"></li> 

@@ -1,7 +1,26 @@
 define(['ko','jquery', 'QuestionModel', 'CategoryModel', 'QuizRepository'], function(ko, jquery, QuestionModel, CategoryModel, QuizRepository){
     return function QuizViewModel(QuestionModel, CategoryModel){
         var self = this;
-        self.Questions = ko.observableArray([]);
+        var repo = new QuizRepository();
+        
+        self.Questions = ko.observableArray(repo.GetQuestions(10));
+        self.CurrentIndex = 0;
+        self.CurrentQuestion = ko.observable(self.Questions()[0]);
+        
+        self.NextQuestion = function(){
+            if(self.CurrentIndex < self.Questions().length - 1){
+                self.CurrentIndex++;
+                self.CurrentQuestion(self.Questions()[self.CurrentIndex]);
+            }
+        };
+        
+        self.PreviousQuestion = function(){
+            if(self.CurrentIndex > 0){
+                self.CurrentIndex--;
+                self.CurrentQuestion(self.Questions()[self.CurrentIndex]);
+            }
+        };
+
         
         
         
