@@ -14,7 +14,7 @@ requirejs.config({
     }
 });
 
-requirejs(['ko', 'jquery', 'text', 'CategoryModel', 'QuestionModel', 'QuizViewModel', 'QuizRepository'], 
-    function(ko, jquery, text, CategoryModel, QuestionModel, QuizViewModel, QuizRepository){
+requirejs(['ko', 'jquery', 'text', 'CategoryModel', 'QuestionModel', 'QuizViewModel', 'QuizRepository', 'bootstrapjs'], 
+    function(ko, jquery, text, CategoryModel, QuestionModel, QuizViewModel, QuizRepository, bootstrapjs){
         ko.applyBindings(new QuizViewModel(), document.getElementById('main')); 
 });
