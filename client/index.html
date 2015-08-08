@@ -12,10 +12,14 @@
         <div class="row">
             <div class="col-sm-12"></div>
         </div>
-        <div class="row">
+        <div class="row" id="questionRow">
             <div class="col-md-3 col-md-offset-5 center">
                 <h4>Current Question: </h4>
                 <span data-bind="text: CurrentQuestion().question()"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 col-md-offset-5 center">
                 <h4>Answer: </h4><span data-bind="text: CurrentQuestion().answer"></span>
             </div>
         </div>
