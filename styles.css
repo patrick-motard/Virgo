@@ -7,3 +7,12 @@
 /*#blue-text{*/
 /*    color:blue;*/
 /*}*/
+.navBtn {
+    width: 6em;
+}
+.navBtnL{
+    margin-right:2px;
+}
+.center{
+    text-align:center;
+}
