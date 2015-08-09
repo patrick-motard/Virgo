@@ -26,6 +26,12 @@ define(['ko','jquery', 'QuestionModel', 'CategoryModel', 'QuizRepository'], func
         }, self);
         
         self.time = "10";
+        
+        var alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
+        alphabet.push('_');
+        self.chars = alphabet;
+        
+        
     
         (function init(){
             // self.Questions([1,2,3,4,5,10,1222,12213]);
