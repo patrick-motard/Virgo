@@ -5,6 +5,7 @@ define(['ko','jquery', 'QuestionModel', 'CategoryModel', 'QuizRepository'], func
         self.Questions = ko.observableArray([]);
         self.CurrentIndex = ko.observable(0);
         self.CurrentQuestion = ko.observable({});
+    
         
         self.NextQuestion = function(){
             if(self.CurrentIndex() < self.Questions().length - 1){
@@ -28,7 +29,6 @@ define(['ko','jquery', 'QuestionModel', 'CategoryModel', 'QuizRepository'], func
         self.time = "10";
     
         (function init(){
-            // self.Questions([1,2,3,4,5,10,1222,12213]);
             var repo = new QuizRepository();
             self.Questions(repo.GetQuestions(10,582));
             self.CurrentQuestion = ko.observable(self.Questions()[0]);

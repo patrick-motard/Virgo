@@ -12,6 +12,12 @@
         <div class="row">
             <div class="col-sm-12"></div>
         </div>
+        <div class="row">
+            <div class="col-md-3 col-md-offset-5 center">
+                <h4>Current Category</h4>
+                <span data-bind="text: CurrentQuestion().category().title"></span>
+            </div>    
+        </div>
         <div class="row" id="questionRow">
             <div class="col-md-3 col-md-offset-5 center">
                 <h4>Current Question</h4>
@@ -43,6 +49,11 @@
         <div class="row">
             <div class="col-md-3 col-md-offset-5 center">
                 <p>Question <span data-bind="text: CurrentIndex() + 1"></span> out of <span data-bind="text: Questions().length"></span></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 col-md-offset-5 center">
+                
             </div>
         </div>
         <!--<p>Your question: <span data-bind="text: question"></span></p>-->

@@ -10,6 +10,6 @@ define(['ko', 'CategoryModel'], function(ko, CategoryModel){
         self.game_id = data.updated_at;
         self.category_id = data.category_id;
         self.invalid_count = data.invalid_count;
-        self.category = CategoryModel(data.category);
+        self.category = ko.observable(data.category);
     };
 });                     

@@ -19,7 +19,7 @@ define(["ko", "jquery", 'QuestionModel', 'CategoryModel'], function(ko, $, Quest
     
 
 
-        //live api call function
+        //live api call function type should be random or category
         self.GetQuestionApi = function(amount, type){
             $.ajax({
                 url: baseURL+type+'?count='+amount,
