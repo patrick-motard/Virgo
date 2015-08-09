@@ -19,3 +19,7 @@
 #questionRow{
     height:100px;
 }
+
+#answer{
+    display:inline-bl;
+}
