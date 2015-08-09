@@ -27,6 +27,12 @@ define(['ko','jquery', 'QuestionModel', 'CategoryModel', 'QuizRepository'], func
         }, self);
         
         self.time = "10";
+        
+        var alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
+        alphabet.push('_');
+        self.chars = alphabet;
+        
+        
     
         (function init(){
             var repo = new QuizRepository();

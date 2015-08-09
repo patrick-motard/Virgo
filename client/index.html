@@ -52,8 +52,10 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-3 col-md-offset-5 center">
-                
+            <div class="col-md-3 col-md-offset-5 center" style="height:40px; padding-left:3em; padding-right:3em" >
+                <!-- ko foreach: chars -->
+                    <button type="button" class="btn btn-primary" style="height 1em; margin:.25em" data-bind="text: $data"> </button>
+                <!-- /ko-->
             </div>
         </div>
         <!--<p>Your question: <span data-bind="text: question"></span></p>-->
