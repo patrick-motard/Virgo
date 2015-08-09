@@ -17,9 +17,14 @@
     text-align:center;
 }
 #questionRow{
+    margin-top:50px;
     height:100px;
 }
 
-#answer{
-    display:inline-bl;
+div > h4{
+    text-decoration:underline;
+}
+
+.nav{
+    margin-top:50px;
 }

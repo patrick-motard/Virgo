@@ -14,16 +14,18 @@
         </div>
         <div class="row" id="questionRow">
             <div class="col-md-3 col-md-offset-5 center">
-                <h4>Current Question: </h4>
+                <h4>Current Question</h4>
                 <span data-bind="text: CurrentQuestion().question()"></span>
+                <h4>Points</h4>
+                <span data-bind="text: CurrentQuestion().value"></span>
             </div>
         </div>
         <div class="row">
             <div class="col-md-3 col-md-offset-5 center">
-                <h4 id="answer">Answer:&nbsp</h4><span data-bind="text: CurrentQuestion().answer"></span>
+                <h4>Answer</h4><span data-bind="text: CurrentQuestion().answer"></span>
             </div>
         </div>
-        <div class="row">
+        <div class="row nav">
             <div class="col-md-3 col-md-offset-5 center">
                 <button class="btn btn-success navBtn navBtnL" type="button" data-bind="click: PreviousQuestion, enable: CurrentIndex() > 0">previous</button>
                 <button class="btn btn-success navBtn navBtnR" type="button" data-bind="click: NextQuestion, enable: CurrentIndex() < Questions().length - 1">next</button>
