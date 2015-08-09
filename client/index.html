@@ -26,9 +26,14 @@
             </div>
         <div class="row">
             <div class="col-md-3 col-md-offset-5 center">
-                <h4>Your Answer</h4><input data-bind="value: userAnswer"></input>
+                <h4>Your Answer</h4>
+                <input data-bind="value: userAnswer"></input>
             </div>    
         </div>
+        <div class="row">
+            <div class="col-md-3 col-md-offset-5 center">
+                <h4>Your answer is</h4><span data-bind="text: awarded()"></span>
+            </div>
         <div class="row nav">
             <div class="col-md-3 col-md-offset-5 center">
                 <button class="btn btn-success navBtn navBtnL" type="button" data-bind="click: PreviousQuestion, enable: CurrentIndex() > 0">previous</button>

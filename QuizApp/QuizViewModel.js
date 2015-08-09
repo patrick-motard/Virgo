@@ -23,7 +23,7 @@ define(['ko','jquery', 'QuestionModel', 'CategoryModel', 'QuizRepository'], func
    
         self.userAnswer = ko.observable("");
         self.awarded = ko.computed(function(){
-             return self.realAnswer == self.userAnswer() ? true : false;
+             return self.CurrentQuestion().answer == self.userAnswer() ? true : false;
         }, self);
         
         self.time = "10";
