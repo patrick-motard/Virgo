@@ -27,7 +27,7 @@ define(["ko", "jquery", 'QuestionModel', 'CategoryModel'], function(ko, $, Quest
                      withCredentials: true
                 }}).done(function( data ) {
                     var questionArr = [];
-                    for(var i = 0; i < amount; i++){
+                    for(var i = 0; i < data.length; i++){
                         var question = new QuestionModel(data[i]);
                         questionArr.push(question);
                         }
