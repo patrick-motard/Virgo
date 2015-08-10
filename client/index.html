@@ -51,14 +51,24 @@
                 <p>Question <span data-bind="text: CurrentIndex() + 1"></span> out of <span data-bind="text: Questions().length"></span></p>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-3 col-md-offset-5 center" style="height:40px; padding-left:3em; padding-right:3em" >
+        <!--<div class="row">-->
+        <!--    <div class="col-md-3 col-md-offset-5 center" style="height:40px; padding-left:3em; padding-right:3em" >-->
                 <!-- ko foreach: chars -->
-                    <button type="button" class="btn btn-primary" style="height 1em; margin:.25em" data-bind="text: $data"> </button>
+        <!--            <button type="button" class="btn btn-primary" style="height 1em; margin:.25em" data-bind="text: $data"> </button>-->
                 <!-- /ko-->
+        <!--    </div>-->
+        <!--</div>-->
+        <div class="row">
+            <div class="col-md-12">    
+                <!--<button data-bind="click:dododo">hellolowowowol</button>-->
+                <div data-bind='component: {
+                name: "timer-component",
+                params: { timey }
+                }'>
+                </div>    
             </div>
         </div>
-        <timer-component></timer-component>
+        
         <!--<p>Your question: <span data-bind="text: question"></span></p>-->
         <!--<p>Your answer: <span data-bind="text: userAnswer"></span></p>-->
         <!--<p>Point Value: <span data-bind="text: pointValue"></span></p>-->

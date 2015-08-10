@@ -6,7 +6,7 @@ define(['ko','jquery', 'QuestionModel', 'CategoryModel', 'QuizRepository'], func
         self.CurrentIndex = ko.observable(0);
         self.CurrentQuestion = ko.observable({});
     
-        
+        // new TimerViewModel()
         self.NextQuestion = function(){
             if(self.CurrentIndex() < self.Questions().length - 1){
                 self.CurrentIndex(self.CurrentIndex() + 1);
@@ -20,19 +20,21 @@ define(['ko','jquery', 'QuestionModel', 'CategoryModel', 'QuizRepository'], func
                 self.CurrentQuestion(self.Questions()[self.CurrentIndex()]);
             }
         };
-   
+        
         self.userAnswer = ko.observable("");
         self.awarded = ko.computed(function(){
              return self.CurrentQuestion().answer == self.userAnswer() ? true : false;
         }, self);
         
-        self.time = "10";
         
         var alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
         alphabet.push('_');
         self.chars = alphabet;
-        
-        
+        self.dododo = function(){
+            self.timey(2);
+            
+        }
+        self.timey = ko.observable(3);
     
         (function init(){
             var repo = new QuizRepository();

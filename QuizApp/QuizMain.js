@@ -10,11 +10,14 @@ requirejs.config({
         CategoryModel: "../QuizApp/CategoryModel",
         QuestionModel: "../QuizApp/QuestionModel",
         QuizViewModel: "../QuizApp/QuizViewModel",
-        QuizRepository: "../DataAccess/QuizRepository"
+        QuizRepository: "../DataAccess/QuizRepository",
+        TimeComponentViewModel: "../components/timer/timer"
     }
 });
 
-requirejs(['ko', 'jquery', 'text', 'CategoryModel', 'QuestionModel', 'QuizViewModel', 'QuizRepository', 'bootstrapjs'], 
+// requirejs(['ko', 'jquery', 'text', 'CategoryModel', 'QuestionModel', 'QuizViewModel', 'QuizRepository', 'bootstrapjs', 'TimeComponentViewModel'], 
+//     function(ko, jquery, text, CategoryModel, QuestionModel, QuizViewModel, QuizRepository, bootstrapjs, TimeComponentViewModel){
+        requirejs(['ko', 'jquery', 'text', 'CategoryModel', 'QuestionModel', 'QuizViewModel', 'QuizRepository', 'bootstrapjs'], 
     function(ko, jquery, text, CategoryModel, QuestionModel, QuizViewModel, QuizRepository, bootstrapjs){
         ko.components.register('timer-component', {
             viewModel: { require: '../components/timer/timer.js' },
