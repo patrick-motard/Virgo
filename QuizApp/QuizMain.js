@@ -16,5 +16,9 @@ requirejs.config({
 
 requirejs(['ko', 'jquery', 'text', 'CategoryModel', 'QuestionModel', 'QuizViewModel', 'QuizRepository', 'bootstrapjs'], 
     function(ko, jquery, text, CategoryModel, QuestionModel, QuizViewModel, QuizRepository, bootstrapjs){
+        ko.components.register('timer-component', {
+            viewModel: { require: '../components/timer/timer.js' },
+            template: { require: 'text!../components/timer/timer.html' }
+        });
         ko.applyBindings(new QuizViewModel(), document.getElementById('main')); 
 });

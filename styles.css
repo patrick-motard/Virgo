@@ -7,6 +7,10 @@
 /*#blue-text{*/
 /*    color:blue;*/
 /*}*/
+body{
+    background:url(http://subtlepatterns.com/patterns/white_carbonfiber.png);
+}
+
 .navBtn {
     width: 6em;
 }

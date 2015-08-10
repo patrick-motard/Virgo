@@ -1,6 +1,6 @@
-define(['ko', '!text../components/tile/tile.html'], function(ko, TileView){
+define(['ko', 'timerComponent'], function(ko, timerComponent){
     var TileViewModel = function(){
         
     };
-    return { viewModel: TileViewModel, template: TileView }
+    return { viewModel: TileViewModel, template: timerComponent }
 })
