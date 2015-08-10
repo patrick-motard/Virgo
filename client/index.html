@@ -28,7 +28,11 @@
         </div>
         <div class="row">
             <div class="col-md-3 col-md-offset-5 center">
-                <h4>Answer</h4><span data-bind="text: CurrentQuestion().answer"></span>
+                <h4>Answer</h4>
+                <!--ko foreach: CurrentAnswer() -->
+                    <button type="button" class="btn btn-primary" style="height 1em; margin:.25em" data-bind="text: $data"> </button>
+                 <!--/ko-->
+                <!--<span data-bind="text: CurrentAnswer()"></span>-->
             </div>
         <!--<div class="row">-->
         <!--    <div class="col-md-3 col-md-offset-5 center">-->
@@ -51,13 +55,13 @@
                 <p>Question <span data-bind="text: CurrentIndex() + 1"></span> out of <span data-bind="text: Questions().length"></span></p>
             </div>
         </div>
-        <!--<div class="row">-->
-        <!--    <div class="col-md-3 col-md-offset-5 center" style="height:40px; padding-left:3em; padding-right:3em" >-->
-                <!-- ko foreach: chars -->
-        <!--            <button type="button" class="btn btn-primary" style="height 1em; margin:.25em" data-bind="text: $data"> </button>-->
-                <!-- /ko-->
-        <!--    </div>-->
-        <!--</div>-->
+        <div class="row">
+            <div class="col-md-3 col-md-offset-5 center" style="height:40px; padding-left:3em; padding-right:3em" >
+                 <!--ko foreach: chars -->
+                    <button type="button" class="btn btn-primary" style="height 1em; margin:.25em" data-bind="text: $data"> </button>
+                 <!--/ko-->
+            </div>
+        </div>
         <div class="row">
             <div class="col-md-12">    
                 <!--<button data-bind="click:dododo">hellolowowowol</button>-->
