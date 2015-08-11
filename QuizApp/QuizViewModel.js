@@ -8,6 +8,11 @@ define(['ko','jquery', 'QuestionModel', 'CategoryModel', 'QuizRepository'], func
         self.CurrentAnswer = ko.observable('');
         self.CurrentScore = ko.observable(0);
         self.HighScore = ko.observable(0);
+        self.validate = function(data){
+            if(self.CurrentAnswer().indexOf(data) > -1){
+                return false;
+            }else {return true;}
+        };
         // new TimerViewModel()
         self.NextQuestion = function(){
             if(self.CurrentIndex() < self.Questions().length - 1){

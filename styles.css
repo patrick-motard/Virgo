@@ -8,7 +8,10 @@
 /*    color:blue;*/
 /*}*/
 body{
-    background:url(http://subtlepatterns.com/patterns/white_carbonfiber.png);
+    background:url(http://subtlepatterns.com/patterns/ice_age.png);
+    line-height:1.5em;
+    margin:0;
+    padding:0;
 }
 
 .navBtn {
@@ -20,7 +23,8 @@ body{
 
 h3{
     text-decoration:underline;
-    font-family: 'Vollkor', serif;
+    font-family: 'Kreon', serif;
+    text-shadow: 2px 2px 2px #ccc;
 }
 
 .right{
@@ -36,8 +40,8 @@ h3{
 }
 
 .container{
-    background:#669999;
-    padding:40px;
+    padding:10px;
+    margin:20px auto;
 }
 
 .btn{
@@ -45,9 +49,15 @@ h3{
     margin:.25em;
 }
 
-h1, h2, h4, h5, h6 {
-    font-family: 'Vollkorn', serif;
+h2, h4, h5, h6 {
+    font-family: 'Kreon', serif;
+    
+}
+h1 {
+    font-family: 'Kreon', serif;
+    text-shadow: 2px 2px 2px grey;
 }
 p, div {
-    font-family: 'Exo', sans-serif;
+    font-family: 'Ubuntu', sans-serif;
 }
+
