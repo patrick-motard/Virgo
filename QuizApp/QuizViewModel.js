@@ -6,6 +6,8 @@ define(['ko','jquery', 'QuestionModel', 'CategoryModel', 'QuizRepository'], func
         self.CurrentIndex = ko.observable(0);
         self.CurrentQuestion = ko.observable({});
         self.CurrentAnswer = ko.observable('');
+        self.CurrentScore = ko.observable(0);
+        self.HighScore = ko.observable(0);
         // new TimerViewModel()
         self.NextQuestion = function(){
             if(self.CurrentIndex() < self.Questions().length - 1){

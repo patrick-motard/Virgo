@@ -13,6 +13,16 @@
             <div class="col-sm-12"></div>
         </div>
         <div class="row">
+            <div class="col-md-6">
+               <h4>Current Score</h4>
+               <span data-bind="text: CurrentScore()"></span>
+            </div>
+            <div class="col-md-6">
+                <h4>High Score</h4>
+                <span data-bind="text: HighScore()"></span>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-md-12">
                     <h4>Current Category</h4>
                     <span data-bind="text: CurrentQuestion().category().title"></span>
@@ -31,13 +41,15 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
                 <h4>Answer</h4>
                 <!--ko foreach: CurrentAnswer() -->
                     <button type="button" class="btn btn-primary" style="height 1em; margin:.25em" data-bind="text: $data"> </button>
                  <!--/ko-->
                 <!--<span data-bind="text: CurrentAnswer()"></span>-->
             </div>
+            <div class="col-md-2"></div>
         </div>
         <!--<div class="row">-->
         <!--    <div class="col-md-3 col-md-offset-5 center">-->
@@ -71,11 +83,13 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12" style="height:40px; padding-left:3em; padding-right:3em" >
+            <div class="col-md-2"></div>
+            <div class="col-md-8" style="height:40px; padding-left:3em; padding-right:3em" >
                  <!--ko foreach: chars -->
                     <button type="button" class="btn btn-primary" style="height 1em; margin:.25em" data-bind="text: $data"> </button>
                  <!--/ko-->
             </div>
+            <div class="col-md-2"></div>
         </div>
         
         
