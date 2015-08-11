@@ -17,18 +17,19 @@ body{
 .navBtnL{
     margin-right:2px;
 }
-.center{
-    text-align:center;
-}
-#questionRow{
-    margin-top:50px;
-    height:100px;
-}
 
 div > h4{
     text-decoration:underline;
 }
 
-.nav{
-    margin-top:50px;
+.right{
+    text-align:right;
+}
+
+.row{
+    margin-top:25px;
+}
+
+#main{
+    text-align:center;
 }
