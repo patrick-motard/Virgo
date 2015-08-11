@@ -5,47 +5,49 @@
 	<title>Quiz App</title>
 	<link rel="stylesheet" type="text/css" href="../bower_components/bootstrap/dist/css/bootstrap.css"/>
 	<link rel="stylesheet" type="text/css" href="../bower_components/bootstrap/dist/css/bootstrap-theme.css"/>
+	<link href='http://fonts.googleapis.com/css?family=Exo' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Vollkorn' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="../styles.css"/>
 </head>
 <body>
     <div id="main" class="container">
         <div class="row">
-            <div class="col-sm-12"></div>
+            <div class="col-sm-12"><h1>Project Virgo</h1></div>
         </div>
         <div class="row">
             <div class="col-md-6">
-               <h4>Current Score</h4>
+               <h3>Current Score</h3>
                <span data-bind="text: CurrentScore()"></span>
             </div>
             <div class="col-md-6">
-                <h4>High Score</h4>
+                <h3>High Score</h3>
                 <span data-bind="text: HighScore()"></span>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
-                    <h4>Current Category</h4>
+                    <h3>Current Category</h3>
                     <span data-bind="text: CurrentQuestion().category().title"></span>
             </div>
         </div>
         <div class="row">
             <div class="col-mid-12">
-                <h4>Points</h4>
+                <h3>Points</h3>
                 <span data-bind="text: CurrentQuestion().value"></span>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
-                <h4>Current Question</h4>
+                <h3>Current Question</h3>
                 <span data-bind="text: CurrentQuestion().question()"></span>
             </div>
         </div>
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8">
-                <h4>Answer</h4>
+                <h3>Answer</h3>
                 <!--ko foreach: CurrentAnswer() -->
-                    <button type="button" class="btn btn-primary" style="height 1em; margin:.25em" data-bind="text: $data"> </button>
+                    <button type="button" class="btn btn-primary" data-bind="text: $data"> </button>
                  <!--/ko-->
                 <!--<span data-bind="text: CurrentAnswer()"></span>-->
             </div>
@@ -53,13 +55,13 @@
         </div>
         <!--<div class="row">-->
         <!--    <div class="col-md-3 col-md-offset-5 center">-->
-        <!--        <h4>Your Answer</h4>-->
+        <!--        <h3>Your Answer</h3>-->
         <!--        <input data-bind="value: userAnswer"></input>-->
         <!--    </div>    -->
         <!--</div>-->
         <!--<div class="row">-->
         <!--    <div class="col-md-3 col-md-offset-5 center">-->
-        <!--        <h4>Your answer is</h4><span data-bind="text: awarded()"></span>-->
+        <!--        <h3>Your answer is</h3><span data-bind="text: awarded()"></span>-->
         <!--    </div>-->
         <!--<div class="row">-->
         <!--    <div class="col-md-12">-->
@@ -84,9 +86,9 @@
         </div>
         <div class="row">
             <div class="col-md-2"></div>
-            <div class="col-md-8" style="height:40px; padding-left:3em; padding-right:3em" >
+            <div class="col-md-8" >
                  <!--ko foreach: chars -->
-                    <button type="button" class="btn btn-primary" style="height 1em; margin:.25em" data-bind="text: $data"> </button>
+                    <button type="button" class="btn btn-primary" data-bind="text: $data"> </button>
                  <!--/ko-->
             </div>
             <div class="col-md-2"></div>

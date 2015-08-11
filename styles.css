@@ -18,8 +18,9 @@ body{
     margin-right:2px;
 }
 
-div > h4{
+h3{
     text-decoration:underline;
+    font-family: 'Vollkor', serif;
 }
 
 .right{
@@ -27,9 +28,26 @@ div > h4{
 }
 
 .row{
-    margin-top:25px;
+    margin-top:2em;
 }
 
 #main{
     text-align:center;
+}
+
+.container{
+    background:#669999;
+    padding:40px;
+}
+
+.btn{
+    height: 2em; 
+    margin:.25em;
+}
+
+h1, h2, h4, h5, h6 {
+    font-family: 'Vollkorn', serif;
+}
+p, div {
+    font-family: 'Exo', sans-serif;
 }
