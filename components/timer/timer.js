@@ -20,15 +20,12 @@ define(['ko'], function(ko){
         // self.counter = ko.observable(30);
         
         //want >
-        self.counter = params.timey;
-        
+        self.counter = params.TimeRemaining;
+    
         // self.counter = ko.observable(time);
         self.hate = ko.observable(function(){
-            if(i != undefined){
-                clearInterval(i);
-            }
             // var counter = 0;
-            self.counter(10);
+            self.counter(30);
             var i = setInterval(function(){
                 // do your thing
             
