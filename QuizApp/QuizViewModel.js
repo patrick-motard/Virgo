@@ -18,7 +18,11 @@ define(['ko','jquery', 'QuestionModel', 'CategoryModel', 'QuizRepository'], func
         self.chars = alphabet;
         
         self.TimeRemaining = ko.observable(30);
-    
+        
+        self.GuessLetter = function(letter){
+            return null;
+        };
+        
         (function init(){
             var repo = new QuizRepository();
             self.Questions(repo.GetQuestions(10,582));

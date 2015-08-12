@@ -63,7 +63,7 @@
             <div class="col-md-2"></div>
             <div class="col-md-8" >
                  <!--ko foreach: chars -->
-                    <button type="button" class="btn btn-primary" data-bind="text: $data, visible: $parent.validate($data), click: GuessLetter($data)"> </button>
+                    <button type="button" class="btn btn-primary" data-bind="text: $data, visible: $parent.validate($data), click: $parent.GuessLetter($data)"> </button>
                  <!--/ko-->
             </div>
             <div class="col-md-2"></div>
