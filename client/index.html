@@ -6,7 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="../bower_components/bootstrap/dist/css/bootstrap.css"/>
 	<link rel="stylesheet" type="text/css" href="../bower_components/bootstrap/dist/css/bootstrap-theme.css"/>
 	<!--<link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>-->
- <!--   <link href='https://fonts.googleapis.com/css?family=Kreon' rel='stylesheet' type='text/css'>-->
+    <!--<link href='https://fonts.googleapis.com/css?family=Kreon' rel='stylesheet' type='text/css'>-->
 	<link rel="stylesheet" type="text/css" href="../styles.css"/>
 </head>
 <body>
@@ -45,7 +45,11 @@
             <div class="col-md-8">
                 <h3>Answer</h3>
                 <!--ko foreach: Answer -->
-                    <span data-bind="text: $data" style="font-size:20px"></span>
+                    <span style="border:1px solid black; text-size:15px; width:10px; display:inline-block; margin: 2px;" data-bind="text: $data" style="font-size:20px; width:8px"></span>
+                <!--/ko-->
+                <h3>User Answer</h3>
+                <!--ko foreach: UserAnswer -->
+                    <span style="border:1px solid black; text-size:15px; width:10px; display:inline-block; margin: 2px;" data-bind="text: $data" style="font-size:20px; width:8px"></span>
                 <!--/ko-->
             </div>
             <div class="col-md-2"></div>
@@ -63,7 +67,7 @@
             <div class="col-md-2"></div>
             <div class="col-md-8" >
                  <!--ko foreach: chars -->
-                    <button type="button" class="btn btn-primary" data-bind="text: $data, visible: $parent.validate($data), click: $parent.GuessLetter($data)"> </button>
+                    <button type="button" class="btn btn-primary" data-bind="text: $data, visible: $parent.validate(), click: $parent.GuessLetter($data)"> </button>
                  <!--/ko-->
             </div>
             <div class="col-md-2"></div>
