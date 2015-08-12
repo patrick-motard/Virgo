@@ -8,61 +8,42 @@ define(['ko','jquery', 'QuestionModel', 'CategoryModel', 'QuizRepository'], func
         self.CurrentAnswer = ko.observable('');
         self.CurrentScore = ko.observable(0);
         self.HighScore = ko.observable(0);
+        
         self.validate = function(data){
-            if(self.CurrentAnswer().indexOf(data) > -1){
-                return false;
-            }else {return true;}
+            return true;
         };
-        // new TimerViewModel()
-        self.NextQuestion = function(){
-            if(self.CurrentIndex() < self.Questions().length - 1){
-                self.CurrentIndex(self.CurrentIndex() + 1);
-                self.CurrentQuestion(self.Questions()[self.CurrentIndex()]);
-                self.CurrentAnswer(self.CurrentQuestion().answer);
-            }
-        };//no longer needed as a button
-        
-        self.PreviousQuestion = function(){
-            if(self.CurrentIndex() > 0){
-                self.CurrentIndex(self.CurrentIndex() - 1);
-                self.CurrentQuestion(self.Questions()[self.CurrentIndex()]);
-                self.CurrentAnswer(self.CurrentQuestion().answer);
-            }
-        };//no longer needed as a button
-        
-        self.AnswerArray = function(answer){
-            var arr = [];
-            for(var i = 0; i < answer.length; i++){
-                arr.push(answer[i]);
-            }  
-            return arr;
-        };//function to split each char in a string and return an array.
-        
-        //self.userAnswer = ko.observable(""); no longer used
-        // self.awarded = ko.computed(function(){
-        //      return self.CurrentQuestion().answer == self.userAnswer() ? true : false;
-        // }, self); no longer used
-        
-        
+
         var alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
         alphabet.push('_');
         self.chars = alphabet;
         
-        
-        
-        // self.dododo = function(){
-        //     self.timey(2);
-            
-        // } no longer used
-        self.timey = ko.observable(3);
+        self.TimeRemaining = ko.observable(30);
     
         (function init(){
             var repo = new QuizRepository();
             self.Questions(repo.GetQuestions(10,582));
             self.CurrentQuestion = ko.observable(self.Questions()[0]);
-            self.CurrentAnswer = ko.observable(self.AnswerArray(self.CurrentQuestion().answer));
+            self.Answer = ko.observableArray(self.CurrentQuestion().answer.split(""));
         }());
     };
 });
 
+
+
+//////////YE GRAVEYARD OF OLDE BUT MAYBE VALUEABLE CODE////////////////////////
+        // self.NextQuestion = function(){
+        //     if(self.CurrentIndex() < self.Questions().length - 1){
+        //         self.CurrentIndex(self.CurrentIndex() + 1);
+        //         self.CurrentQuestion(self.Questions()[self.CurrentIndex()]);
+        //         self.CurrentAnswer(self.CurrentQuestion().answer);
+        //     }
+        // };//no longer needed as a button
+        
+        // self.PreviousQuestion = function(){
+        //     if(self.CurrentIndex() > 0){
+        //         self.CurrentIndex(self.CurrentIndex() - 1);
+        //         self.CurrentQuestion(self.Questions()[self.CurrentIndex()]);
+        //         self.CurrentAnswer(self.CurrentQuestion().answer);
+        //     }
+        // };//no longer needed as a button
 

@@ -24,6 +24,9 @@ define(['ko'], function(ko){
         
         // self.counter = ko.observable(time);
         self.hate = ko.observable(function(){
+            if(i != undefined){
+                clearInterval(i);
+            }
             // var counter = 0;
             self.counter(10);
             var i = setInterval(function(){
