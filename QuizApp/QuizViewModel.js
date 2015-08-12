@@ -13,13 +13,21 @@ define(['ko','jquery', 'QuestionModel', 'CategoryModel', 'QuizRepository'], func
         
         
         
-        self.validate = function(data){
-            if(self.UserAnswer().indexOf(data) > -1){
+        self.validate = ko.computed(function(data){
+            
+            var letterInAnswer = self.UserAnswer().indexOf(data) > -1;
+            
+            var letterAlreadyGuessed = self.GuessedLetters().indexOf(data) > -1;
+            
+            if (letterInAnswer || letterAlreadyGuessed){
+                
                 return false;
-            }else {return true;}
+                
+            } else {
+                return true;
+            }}, self);
             
             // if letter occurs in users answer or in guessed letters visible = false
-        };
 
         var alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
         alphabet.push('_');
@@ -39,22 +47,27 @@ define(['ko','jquery', 'QuestionModel', 'CategoryModel', 'QuizRepository'], func
             // hide button
             // this is handled by validate
             
+            
             // fill answer with occurances
             if(self.Answer().indexOf(letter) > -1){
                 for(var i = 0; i < self.Answer().length; i ++){
                     if(letter === self.Answer()[i]){
-                        self.UserAnswer()[i] = self.Answer()[i];
+                        self.UserAnswer()[i](self.Answer()[i]);
                     }
                 }
-            }else self.GuessedLetters().push(letter);// add letter to guessed letters (if it isn't found)
+            }else {
+                self.GuessedLetters().push(letter);
+                
+            }// add letter to guessed letters (if it isn't found)
             
             // reset timer
         };
         
         var GetLetters = function () {
+            var answer = self.CurrentQuestion().answer.toLowerCase();
             var letters = [];
-            for(var i = 0; i < self.CurrentQuestion().answer.length; i++){
-                letters.push(self.CurrentQuestion().answer[i]);
+            for(var i = 0; i < answer.length; i++){
+                letters.push(answer[i]);
             }
 
             return letters;
@@ -75,7 +88,7 @@ define(['ko','jquery', 'QuestionModel', 'CategoryModel', 'QuizRepository'], func
                 if(self.Answer()[i] === " "){
                     self.UserAnswer().push(" ");
                 }else{ 
-                    self.UserAnswer().push("_");
+                    self.UserAnswer().push(ko.observable("_"));
                 }
             }
         }());
