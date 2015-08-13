@@ -10,7 +10,7 @@ define(['ko','jquery', 'QuestionModel', 'CategoryModel', 'QuizRepository'], func
         self.HighScore = ko.observable(0);
         self.UserAnswer = ko.observableArray([]);
         self.GuessedLetters = ko.observableArray([]);
-        
+        self.Chances = ko.observable(6);
         
         
         // self.validate = ko.computed(function(data){
@@ -33,7 +33,7 @@ define(['ko','jquery', 'QuestionModel', 'CategoryModel', 'QuizRepository'], func
         self.chars = ko.observableArray(alphabet);
         self.wrongGuesses = ko.observableArray([]);
         
-        self.TimeRemaining = ko.observable(30);
+        self.TimeRemaining = ko.observable(3);
         self.ToggleIsGuessed = function (sender) {
             sender.IsGuessed(!self.IsGuessed());
         };

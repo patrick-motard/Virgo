@@ -35,7 +35,7 @@
             <div class="col-xs-2">
                 <div data-bind='component: {
                     name: "timer-component",
-                    params: { TimeRemaining }}'>
+                    params: { TimeRemaining: TimeRemaining, Chances: Chances }}'>
                 </div>  
             </div>
             <div class="col-xs-8">
@@ -56,26 +56,24 @@
                 <!--/ko-->
                 <h3>User Answer</h3>
                 <!--ko foreach: UserAnswer -->
-                    <span style="border:1px solid black; font-size:20px; text-size:15px; width:30px; height:40px; display:inline-block; margin: 2px;" data-bind="text: $data, style: {'background-color' : $data === '_' ? 'green' : 'white'}"></span>
+                    <span style="border:1px solid black; font-size:20px; text-size:15px; width:30px; height:40px; display:inline-block; margin: 2px;" 
+                        data-bind="text: $data, style: {'background-color' : $data === '_' ? 'green' : 'white'}">
+                    </span>
                 <!--/ko-->
             </div>
             <div class="col-md-2"></div>
         </div>
         <div class="row">
-            <div class="col-md-12">    
-  
-            </div>
-        </div>
-        <div class="row">
-
+            
             <div class="col-xs-6" >
+                <h1 data-bind="text: Chances"></h1>
                 <h3>Word Bank</h3>
                  <!--ko foreach: chars -->
                     <button type="button" class="btn btn-primary" data-bind="text: $data, click: function(){ $parent.GuessLetter($data)}"> </button>
                  <!--/ko-->
             </div>
             <div class="col-xs-6">
-                 <h3>Incorrect Guesses</h3>
+                 <h3 style="width:100%">Incorrect Guesses</h3>
                  <!--ko foreach: GuessedLetters -->
                     <button type="button" class="btn btn-primary" data-bind="text: $data"> </button>
                  <!--/ko-->
