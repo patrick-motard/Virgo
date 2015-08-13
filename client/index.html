@@ -56,7 +56,7 @@
                 <!--/ko-->
                 <h3>User Answer</h3>
                 <!--ko foreach: UserAnswer -->
-                    <span style="border:1px solid black; font-size:20px; text-size:15px; width:30px; height:40px; display:inline-block; margin: 2px;" data-bind="text: $data"></span>
+                    <span style="border:1px solid black; font-size:20px; text-size:15px; width:30px; height:40px; display:inline-block; margin: 2px;" data-bind="text: $data, style: {'background-color' : $data === '_' ? 'green' : 'white'}"></span>
                 <!--/ko-->
             </div>
             <div class="col-md-2"></div>
@@ -73,6 +73,8 @@
                  <!--ko foreach: chars -->
                     <button type="button" class="btn btn-primary" data-bind="text: $data, click: function(){ $parent.GuessLetter($data)}"> </button>
                  <!--/ko-->
+            </div>
+            <div class="col-xs-6">
                  <h3>Incorrect Guesses</h3>
                  <!--ko foreach: GuessedLetters -->
                     <button type="button" class="btn btn-primary" data-bind="text: $data"> </button>

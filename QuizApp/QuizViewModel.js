@@ -66,7 +66,7 @@ define(['ko','jquery', 'QuestionModel', 'CategoryModel', 'QuizRepository'], func
                     }
                 }
             }else {
-                self.GuessedLetters().push(letter);
+                self.GuessedLetters.push(letter);
             }// add letter to guessed letters (if it isn't found)
             
             // reset timer
