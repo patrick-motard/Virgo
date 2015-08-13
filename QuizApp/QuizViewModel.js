@@ -50,22 +50,11 @@ define(['ko','jquery', 'QuestionModel', 'CategoryModel', 'QuizRepository'], func
         
         self.GuessLetter = function(letter){
             
-            //if letter is found in answer, take indexes where it was found, and add
-            // the found letter to the same indexes in the users answer array
-            //if not, put the letter in a guessed letters array
-            
-            // the answer visible on the view is the users answer, not the self.Answer,
-            // the users answer starts off being an array of _ characters of length = self.answer
-            // spaces are shown as spaces not _
-            
-            // hide button
-            // this is handled by validate
-            
             //find location of letter in alphabet
             var indexToPop = self.chars.indexOf(letter);
             //remove it
             self.chars.splice(indexToPop, 1);
-            self.wrongGuesses.push(letter);
+            //give user more time to guess
             self.TimeRemaining(30);
             
             
@@ -78,7 +67,6 @@ define(['ko','jquery', 'QuestionModel', 'CategoryModel', 'QuizRepository'], func
                 }
             }else {
                 self.GuessedLetters().push(letter);
-                
             }// add letter to guessed letters (if it isn't found)
             
             // reset timer
