@@ -13,29 +13,43 @@ define(['ko','jquery', 'QuestionModel', 'CategoryModel', 'QuizRepository'], func
         
         
         
-        self.validate = ko.computed(function(data){
+        // self.validate = ko.computed(function(data){
             
-            var letterInAnswer = self.UserAnswer().indexOf(data) > -1;
+        //     var letterInAnswer = self.UserAnswer().indexOf(data) > -1;
             
-            var letterAlreadyGuessed = self.GuessedLetters().indexOf(data) > -1;
+        //     var letterAlreadyGuessed = self.GuessedLetters().indexOf(data) > -1;
             
-            if (letterInAnswer || letterAlreadyGuessed){
+        //     if (letterInAnswer || letterAlreadyGuessed){
                 
-                return false;
+        //         return false;
                 
-            } else {
-                return true;
-            }}, self);
+        //     } else {
+        //         return true;
+        //     }}, self);
             
             // if letter occurs in users answer or in guessed letters visible = false
 
         var alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
-        alphabet.push('_');
-        self.chars = alphabet;
+        self.chars = ko.observableArray(alphabet);
+        self.wrongGuesses = ko.observableArray([]);
         
         self.TimeRemaining = ko.observable(30);
+        self.ToggleIsGuessed = function (sender) {
+            sender.IsGuessed(!self.IsGuessed());
+        };
+        
+        // ko.utils.arrayForEach(self.Tests(), function (test) {
+        //     if (!test.isExpanded) {
+        //         test.isExpanded = ko.observable();
+        //     }
+        // };
+        
+        // self.toggleIsExpanded = function (sender) {
+        //   sender.isExpanded(!self.isExpanded());
+        // };
         
         self.GuessLetter = function(letter){
+            
             //if letter is found in answer, take indexes where it was found, and add
             // the found letter to the same indexes in the users answer array
             //if not, put the letter in a guessed letters array
@@ -46,6 +60,13 @@ define(['ko','jquery', 'QuestionModel', 'CategoryModel', 'QuizRepository'], func
             
             // hide button
             // this is handled by validate
+            
+            //find location of letter in alphabet
+            var indexToPop = self.chars.indexOf(letter);
+            //remove it
+            self.chars.splice(indexToPop, 1);
+            self.wrongGuesses.push(letter);
+            self.TimeRemaining(30);
             
             
             // fill answer with occurances

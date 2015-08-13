@@ -5,8 +5,8 @@
 	<title>Quiz App</title>
 	<link rel="stylesheet" type="text/css" href="../bower_components/bootstrap/dist/css/bootstrap.css"/>
 	<link rel="stylesheet" type="text/css" href="../bower_components/bootstrap/dist/css/bootstrap-theme.css"/>
-	<!--<link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>-->
-    <!--<link href='https://fonts.googleapis.com/css?family=Kreon' rel='stylesheet' type='text/css'>-->
+	<link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Kreon' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="../styles.css"/>
 </head>
 <body>
@@ -15,62 +15,65 @@
             <div class="col-sm-12"><h1>Project Virgo</h1></div>
         </div>
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-xs-4">
                <h3>Current Score</h3>
                <span data-bind="text: CurrentScore()"></span>
             </div>
-            <div class="col-md-4">
+            <div class="col-xs-4">
                     <h3>Current Category</h3>
                     <span data-bind="text: CurrentQuestion().category().title"></span>
             </div>
-            <div class="col-md-4">
+            <div class="col-xs-4">
                 <h3>High Score</h3>
                 <span data-bind="text: HighScore()"></span>
             </div>
         </div>
         <div class="row">
-            <div class="col-mid-12">
+            
+        </div>
+        <div class="row">
+            <div class="col-xs-2">
+                <div data-bind='component: {
+                    name: "timer-component",
+                    params: { TimeRemaining }}'>
+                </div>  
+            </div>
+            <div class="col-xs-8">
+                <h3>Current Question</h3>
+                <span data-bind="text: CurrentQuestion().question()"></span>
+            </div>
+            <div class="col-xs-2">
                 <h3>Points</h3>
                 <span data-bind="text: CurrentQuestion().value"></span>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12">
-                <h3>Current Question</h3>
-                <span data-bind="text: CurrentQuestion().question()"></span>
-            </div>
-        </div>
-        <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8">
-                <h3>Answer</h3>
+                <!--<h3>Answer</h3>-->
                 <!--ko foreach: Answer -->
-                    <span style="border:1px solid black; text-size:15px; width:10px; display:inline-block; margin: 2px;" data-bind="text: $data" style="font-size:20px; width:8px"></span>
+                <!--    <span style="border:1px solid black; text-size:15px; width:10px; display:inline-block; margin: 2px;" data-bind="text: $data" style="font-size:20px; width:8px"></span>-->
                 <!--/ko-->
                 <h3>User Answer</h3>
                 <!--ko foreach: UserAnswer -->
-                    <span style="border:1px solid black; text-size:15px; width:10px; display:inline-block; margin: 2px;" data-bind="text: $data" style="font-size:20px; width:8px"></span>
+                    <span style="border:1px solid black; font-size:20px; text-size:15px; width:30px; height:40px; display:inline-block; margin: 2px;" data-bind="text: $data"></span>
                 <!--/ko-->
             </div>
             <div class="col-md-2"></div>
         </div>
         <div class="row">
             <div class="col-md-12">    
-                <div data-bind='component: {
-                        name: "timer-component",
-                        params: { TimeRemaining }
-                    }'>
-                </div>    
+  
             </div>
         </div>
         <div class="row">
-            <div class="col-md-2"></div>
-            <div class="col-md-8" >
+
+            <div class="col-md-12" >
                  <!--ko foreach: chars -->
-                    <button type="button" class="btn btn-primary" data-bind="text: $data, visible: $parent.validate, click: function(){ $parent.GuessLetter($data) }"> </button>
+                    <button type="button" class="btn btn-primary" data-bind="text: $data, click: function(){ $parent.GuessLetter($data)}"> </button>
                  <!--/ko-->
             </div>
-            <div class="col-md-2"></div>
+            
         </div>
     </div>
 	<!--REQUIREJS ENTRY POINT-->
