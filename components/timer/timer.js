@@ -14,7 +14,7 @@ define(['ko'], function(ko){
                     self.Chances(self.Chances() - 1);
                     if(self.Chances() !== 0 ){
                        self.start(); 
-                    }else {$('#loss').modal('show');}
+                    }
                 }
             }, 1000);
         };
