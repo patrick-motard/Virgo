@@ -12,14 +12,30 @@ define(['ko','jquery', 'QuestionModel', 'CategoryModel', 'QuizRepository'], func
         self.GuessedLetters = ko.observableArray([]);
         self.Chances = ko.observable(6);
         
+        self.StartGame = function(){
+             // intialize the DAL (data access layer)
+                var repo = new QuizRepository();
+                // get the questions from the DAL
+                self.Questions(repo.GetQuestions(10,582));
+                // the current question being asked is the first one recieved
+                self.CurrentQuestion = ko.observable(self.Questions()[0]);
+                // 
+                self.Letters = ko.observable(GetAnswerLetters());
+                self.Answer = ko.observableArray(self.Letters());
+                self.ResetUserAnswer();
+                self.Chances(6);
+                self.CurrentScore(0);
+        }
+        
         self.GameOver = ko.computed(function(){
             if(self.Chances() === 0){
                 $('#loss').modal('show');
                 if(self.HighScore < self.CurrentScore){
                 self.HighScore = self.CurrentScore;
-                
+                }
+                self.StartGame();//need this to fire on modal close.
             }
-        });
+        }, self);
         
         var alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
         self.chars = ko.observableArray(alphabet);
@@ -89,16 +105,7 @@ define(['ko','jquery', 'QuestionModel', 'CategoryModel', 'QuizRepository'], func
         // init is run on page load
         // it sets needed intial values
         (function init(){
-            // intialize the DAL (data access layer)
-            var repo = new QuizRepository();
-            // get the questions from the DAL
-            self.Questions(repo.GetQuestions(10,582));
-            // the current question being asked is the first one recieved
-            self.CurrentQuestion = ko.observable(self.Questions()[0]);
-            // 
-            self.Letters = ko.observable(GetAnswerLetters());
-            self.Answer = ko.observableArray(self.Letters());
-            self.ResetUserAnswer();
+            self.StartGame();
         }());
     };
 });

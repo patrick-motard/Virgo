@@ -2,6 +2,11 @@
 
 requirejs.config({
     baseUrl: '../bower_components/',
+    shim:{
+        'bootstrapjs':{
+            deps: ['jquery']
+        }
+    },
     paths: {
         ko: "knockout/dist/knockout",
         jquery: "jquery/dist/jquery",
