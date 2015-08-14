@@ -91,6 +91,7 @@ define(['ko','jquery', 'QuestionModel', 'CategoryModel', 'QuizRepository'], func
             //  in sequential order 
             self.Letters = ko.observable(GetAnswerLetters());
             self.Answer = ko.observableArray(self.Letters());
+            //clear the users answer
             self.ResetUserAnswer();
         }());
     };
