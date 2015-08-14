@@ -11,7 +11,6 @@ define(['ko','jquery', 'QuestionModel', 'CategoryModel', 'QuizRepository'], func
         self.UserAnswer = ko.observableArray([]);
         self.GuessedLetters = ko.observableArray([]);
         self.Chances = ko.observable(6);
-        
         var alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
         self.chars = ko.observableArray(alphabet);
         self.wrongGuesses = ko.observableArray([]);
@@ -67,7 +66,7 @@ define(['ko','jquery', 'QuestionModel', 'CategoryModel', 'QuizRepository'], func
                 // if the answer has a space
                 if(self.Answer()[i] === " "){
                     // the user answer should too
-                    self.UserAnswer().push(" ");
+                    self.UserAnswer().push(ko.observable(' '));
                 // but if it's a regular character
                 } else { 
                     // fill in an underscore instead
@@ -76,6 +75,28 @@ define(['ko','jquery', 'QuestionModel', 'CategoryModel', 'QuizRepository'], func
             }
         };
         
+        self.AnswerComplete = ko.computed(function(){
+            var i, observ;
+            for(i = 0; i < self.UserAnswer().length; i++){
+                observ = self.UserAnswer()[i];
+                console.log(observ);
+                if(observ() === "_"){return false;}
+            }
+            return true;
+        }, self);
+        
+        self.NextQuestion = function(){
+            
+            if(self.CurrentIndex() < self.Questions().length - 1){
+                
+                self.CurrentIndex(self.CurrentIndex() + 1);
+                
+                self.CurrentQuestion(self.Questions()[self.CurrentIndex()]);
+                
+                self.CurrentAnswer(self.CurrentQuestion().answer);
+            }
+        };
+
         // init is run on page load
         // it sets needed intial values
         (function init(){
@@ -85,8 +106,6 @@ define(['ko','jquery', 'QuestionModel', 'CategoryModel', 'QuizRepository'], func
             self.Questions(repo.GetQuestions(10,582));
             // the current question being asked is the first one recieved
             self.CurrentQuestion = ko.observable(self.Questions()[0]);
-            
-            //IGNORE THIS CODE//
             // letters is... all the in the answer (including duplicates)
             //  in sequential order 
             self.Letters = ko.observable(GetAnswerLetters());
@@ -100,13 +119,7 @@ define(['ko','jquery', 'QuestionModel', 'CategoryModel', 'QuizRepository'], func
 
 
 //////////YE GRAVEYARD OF OLDE BUT MAYBE VALUEABLE CODE////////////////////////
-        // self.NextQuestion = function(){
-        //     if(self.CurrentIndex() < self.Questions().length - 1){
-        //         self.CurrentIndex(self.CurrentIndex() + 1);
-        //         self.CurrentQuestion(self.Questions()[self.CurrentIndex()]);
-        //         self.CurrentAnswer(self.CurrentQuestion().answer);
-        //     }
-        // };//no longer needed as a button
+
         
         // self.PreviousQuestion = function(){
         //     if(self.CurrentIndex() > 0){

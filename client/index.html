@@ -12,7 +12,10 @@
 <body>
     <div id="main" class="container">
         <div class="row">
-            <div class="col-sm-12"><h1>Project Virgo</h1></div>
+            <div class="col-sm-12">
+                <h1>Project Virgo</h1>
+                <button data-bind="click: NextQuestion, visible: AnswerComplete(), text:AnswerComplete()">Next Question</button>
+            </div>
         </div>
         <div class="row">
             <div class="col-xs-4">
