@@ -6,15 +6,17 @@ define(['ko'], function(ko){
         
         var k;
         self.start = function(){
-         self.Counter(3);
-                k = setInterval(function(){
-                    self.Counter(self.Counter() - 1);
-                    if(self.Counter() === 0) {
-                        self.stop();
-                        self.start();
-                        self.Chances(self.Chances() - 1);
+        self.Counter(3);
+            k = setInterval(function(){
+                self.Counter(self.Counter() - 1);
+                if(self.Counter() === 0) {
+                    self.stop();
+                    self.Chances(self.Chances() - 1);
+                    if(self.Chances() !== 0 ){
+                       self.start(); 
                     }
-                }, 1000);
+                }
+            }, 1000);
         };
         self.start();
         self.stop = function(){

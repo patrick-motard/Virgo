@@ -11,6 +11,15 @@ define(['ko','jquery', 'QuestionModel', 'CategoryModel', 'QuizRepository'], func
         self.UserAnswer = ko.observableArray([]);
         self.GuessedLetters = ko.observableArray([]);
         self.Chances = ko.observable(6);
+        self.GameOver = ko.computed(function(){
+            if(self.Chances() === 0){
+                $('#loss').modal('show');
+                if(self.HighScore < self.CurrentScore){
+                self.HighScore = self.CurrentScore;
+                
+            }
+        });
+        
         var alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
         self.chars = ko.observableArray(alphabet);
         self.wrongGuesses = ko.observableArray([]);
@@ -75,6 +84,7 @@ define(['ko','jquery', 'QuestionModel', 'CategoryModel', 'QuizRepository'], func
             }
         };
         
+
         self.AnswerComplete = ko.computed(function(){
             var i, observ;
             for(i = 0; i < self.UserAnswer().length; i++){
@@ -106,11 +116,9 @@ define(['ko','jquery', 'QuestionModel', 'CategoryModel', 'QuizRepository'], func
             self.Questions(repo.GetQuestions(10,582));
             // the current question being asked is the first one recieved
             self.CurrentQuestion = ko.observable(self.Questions()[0]);
-            // letters is... all the in the answer (including duplicates)
-            //  in sequential order 
+
             self.Letters = ko.observable(GetAnswerLetters());
             self.Answer = ko.observableArray(self.Letters());
-            //clear the users answer
             self.ResetUserAnswer();
         }());
     };
