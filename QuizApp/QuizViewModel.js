@@ -11,6 +11,7 @@ define(['ko','jquery', 'QuestionModel', 'CategoryModel', 'QuizRepository'], func
         self.UserAnswer = ko.observableArray([]);
         self.GuessedLetters = ko.observableArray([]);
         self.Chances = ko.observable(6);
+        self.Value = ko.observable(0);
 
         
         self.StartGame = function(){
@@ -21,20 +22,22 @@ define(['ko','jquery', 'QuestionModel', 'CategoryModel', 'QuizRepository'], func
                 // the current question being asked is the first one recieved
                 self.CurrentQuestion = ko.observable(self.Questions()[0]);
                 // 
+                self.Value(repo.value);
                 self.Letters = ko.observable(GetAnswerLetters());
                 self.Answer = ko.observableArray(self.Letters());
                 self.ResetUserAnswer();
                 self.Chances(6);
                 self.CurrentScore(0);
+                self.Value(self.CurrentQuestion().value);
         }
 
         self.GameOver = ko.computed(function(){
             if(self.Chances() === 0){
                 $('#loss').modal('show');
-                if(self.HighScore < self.CurrentScore){
-                self.HighScore = self.CurrentScore;
+                if(self.HighScore() < self.CurrentScore()){
+                self.HighScore(self.CurrentScore());
                 }
-                self.StartGame();//need this to fire on modal close.
+                self.StartGame();//need to run this on modal close
         }}, self);
 
         
@@ -112,6 +115,7 @@ define(['ko','jquery', 'QuestionModel', 'CategoryModel', 'QuizRepository'], func
                 console.log(observ);
                 if(observ() === "_"){return false;}
             }
+            self.CurrentScore(self.CurrentScore() + self.Value());
             return true;
         }, self);
         
@@ -124,6 +128,8 @@ define(['ko','jquery', 'QuestionModel', 'CategoryModel', 'QuizRepository'], func
                 self.CurrentQuestion(self.Questions()[self.CurrentIndex()]);
                 
                 self.CurrentAnswer(self.CurrentQuestion().answer);
+                
+                self.Value(self.CurrentQuestion().value);
             }
         };
 
