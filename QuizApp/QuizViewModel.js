@@ -18,7 +18,7 @@ define(['ko','jquery', 'QuestionModel', 'CategoryModel', 'QuizRepository'], func
                 self.HighScore = self.CurrentScore;
                 
             }
-        },self);
+        }}, self);
         
         var alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
         self.chars = ko.observableArray(alphabet);
