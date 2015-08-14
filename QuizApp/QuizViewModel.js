@@ -12,23 +12,6 @@ define(['ko','jquery', 'QuestionModel', 'CategoryModel', 'QuizRepository'], func
         self.GuessedLetters = ko.observableArray([]);
         self.Chances = ko.observable(6);
         
-        
-        // self.validate = ko.computed(function(data){
-            
-        //     var letterInAnswer = self.UserAnswer().indexOf(data) > -1;
-            
-        //     var letterAlreadyGuessed = self.GuessedLetters().indexOf(data) > -1;
-            
-        //     if (letterInAnswer || letterAlreadyGuessed){
-                
-        //         return false;
-                
-        //     } else {
-        //         return true;
-        //     }}, self);
-            
-            // if letter occurs in users answer or in guessed letters visible = false
-
         var alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
         self.chars = ko.observableArray(alphabet);
         self.wrongGuesses = ko.observableArray([]);
@@ -38,68 +21,74 @@ define(['ko','jquery', 'QuestionModel', 'CategoryModel', 'QuizRepository'], func
             sender.IsGuessed(!self.IsGuessed());
         };
         
-        // ko.utils.arrayForEach(self.Tests(), function (test) {
-        //     if (!test.isExpanded) {
-        //         test.isExpanded = ko.observable();
-        //     }
-        // };
-        
-        // self.toggleIsExpanded = function (sender) {
-        //   sender.isExpanded(!self.isExpanded());
-        // };
-        
         self.GuessLetter = function(letter){
             
-            //find location of letter in alphabet
+            //find location of letter in wordbank
             var indexToPop = self.chars.indexOf(letter);
-            //remove it
+            //remove it from word bank
             self.chars.splice(indexToPop, 1);
-            //give user more time to guess
-            self.TimeRemaining(30);
-            
             
             // fill answer with occurances
             if(self.Answer().indexOf(letter) > -1){
-                for(var i = 0; i < self.Answer().length; i ++){
+                // loop through the letters
+                for( var i = 0; i < self.Answer().length; i ++ ){
+                    // if theres a match
                     if(letter === self.Answer()[i]){
+                        // show the match to the user
                         self.UserAnswer()[i](self.Answer()[i]);
                     }
                 }
-            }else {
+            } else {
+                // if the letter isnt in the answer, 
+                // add it to the incorrect guesses pile
                 self.GuessedLetters.push(letter);
-            }// add letter to guessed letters (if it isn't found)
-            
-            // reset timer
+            }
+            // give the user more time to guess
+            self.TimeRemaining(30);
         };
         
-        var GetLetters = function () {
+        // GetLetters returns all of the letters in the current answer
+        // data is returned as an array of strings
+        var GetAnswerLetters = function () {
+            // make sure there are no capital letters
             var answer = self.CurrentQuestion().answer.toLowerCase();
-            var letters = [];
-            for(var i = 0; i < answer.length; i++){
-                letters.push(answer[i]);
-            }
-
+            // make the string an array of strings
+            var letters =  answer.split("");
+            // return them :)
             return letters;
         };
         
-        
-        
-        
-        (function init(){
-            var repo = new QuizRepository();
-            self.Questions(repo.GetQuestions(10,582));
-            self.CurrentQuestion = ko.observable(self.Questions()[0]);
-            self.Letters = ko.observable(GetLetters());
-            self.Answer = ko.observableArray(self.Letters());
-            
-            
+        // this function clears the users answer
+        self.ResetUserAnswer = function(){
+            // clear the users answer
+            self.UserAnswer([]);
+            // loop through the letters in the real answer
             for(var i = 0; i < self.Answer().length; i++){
+                // if the answer has a space
                 if(self.Answer()[i] === " "){
+                    // the user answer should too
                     self.UserAnswer().push(" ");
-                }else{ 
+                // but if it's a regular character
+                } else { 
+                    // fill in an underscore instead
                     self.UserAnswer().push(ko.observable("_"));
                 }
             }
+        };
+        
+        // init is run on page load
+        // it sets needed intial values
+        (function init(){
+            // intialize the DAL (data access layer)
+            var repo = new QuizRepository();
+            // get the questions from the DAL
+            self.Questions(repo.GetQuestions(10,582));
+            // the current question being asked is the first one recieved
+            self.CurrentQuestion = ko.observable(self.Questions()[0]);
+            // 
+            self.Letters = ko.observable(GetAnswerLetters());
+            self.Answer = ko.observableArray(self.Letters());
+            self.ResetUserAnswer();
         }());
     };
 });
