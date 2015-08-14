@@ -15,6 +15,9 @@ define(['ko','jquery', 'QuestionModel', 'CategoryModel', 'QuizRepository'], func
         self.GameOver = ko.computed(function(){
             if(self.Chances() === 0){
                 $('#loss').modal('show');
+                if(self.HighScore < self.CurrentScore){
+                self.HighScore = self.CurrentScore;
+                
             }
         });
         
