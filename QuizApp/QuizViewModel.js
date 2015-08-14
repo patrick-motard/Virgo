@@ -67,10 +67,12 @@ define(['ko','jquery', 'QuestionModel', 'CategoryModel', 'QuizRepository'], func
             } else {
                 // if the letter isnt in the answer, 
                 // add it to the incorrect guesses pile
+                // decrement chances
                 self.GuessedLetters.push(letter);
+                self.Chances(self.Chances() - 1); 
             }
             // give the user more time to guess
-            self.TimeRemaining(30);
+            self.TimeRemaining(30); //we have it set to 3 other places. Should use a variable in all places.
         };
         
         // GetLetters returns all of the letters in the current answer
