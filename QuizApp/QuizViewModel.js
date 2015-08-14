@@ -11,6 +11,7 @@ define(['ko','jquery', 'QuestionModel', 'CategoryModel', 'QuizRepository'], func
         self.UserAnswer = ko.observableArray([]);
         self.GuessedLetters = ko.observableArray([]);
         self.Chances = ko.observable(6);
+
         
         self.StartGame = function(){
              // intialize the DAL (data access layer)
@@ -26,7 +27,7 @@ define(['ko','jquery', 'QuestionModel', 'CategoryModel', 'QuizRepository'], func
                 self.Chances(6);
                 self.CurrentScore(0);
         }
-        
+
         self.GameOver = ko.computed(function(){
             if(self.Chances() === 0){
                 $('#loss').modal('show');
@@ -34,8 +35,8 @@ define(['ko','jquery', 'QuestionModel', 'CategoryModel', 'QuizRepository'], func
                 self.HighScore = self.CurrentScore;
                 }
                 self.StartGame();//need this to fire on modal close.
-            }
-        }, self);
+        }}, self);
+
         
         var alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
         self.chars = ko.observableArray(alphabet);
@@ -92,7 +93,7 @@ define(['ko','jquery', 'QuestionModel', 'CategoryModel', 'QuizRepository'], func
                 // if the answer has a space
                 if(self.Answer()[i] === " "){
                     // the user answer should too
-                    self.UserAnswer().push(" ");
+                    self.UserAnswer().push(ko.observable(' '));
                 // but if it's a regular character
                 } else { 
                     // fill in an underscore instead
@@ -101,7 +102,29 @@ define(['ko','jquery', 'QuestionModel', 'CategoryModel', 'QuizRepository'], func
             }
         };
         
+
+        self.AnswerComplete = ko.computed(function(){
+            var i, observ;
+            for(i = 0; i < self.UserAnswer().length; i++){
+                observ = self.UserAnswer()[i];
+                console.log(observ);
+                if(observ() === "_"){return false;}
+            }
+            return true;
+        }, self);
         
+        self.NextQuestion = function(){
+            
+            if(self.CurrentIndex() < self.Questions().length - 1){
+                
+                self.CurrentIndex(self.CurrentIndex() + 1);
+                
+                self.CurrentQuestion(self.Questions()[self.CurrentIndex()]);
+                
+                self.CurrentAnswer(self.CurrentQuestion().answer);
+            }
+        };
+
         // init is run on page load
         // it sets needed intial values
         (function init(){
@@ -113,13 +136,7 @@ define(['ko','jquery', 'QuestionModel', 'CategoryModel', 'QuizRepository'], func
 
 
 //////////YE GRAVEYARD OF OLDE BUT MAYBE VALUEABLE CODE////////////////////////
-        // self.NextQuestion = function(){
-        //     if(self.CurrentIndex() < self.Questions().length - 1){
-        //         self.CurrentIndex(self.CurrentIndex() + 1);
-        //         self.CurrentQuestion(self.Questions()[self.CurrentIndex()]);
-        //         self.CurrentAnswer(self.CurrentQuestion().answer);
-        //     }
-        // };//no longer needed as a button
+
         
         // self.PreviousQuestion = function(){
         //     if(self.CurrentIndex() > 0){
