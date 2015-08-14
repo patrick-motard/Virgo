@@ -85,7 +85,10 @@ define(['ko','jquery', 'QuestionModel', 'CategoryModel', 'QuizRepository'], func
             self.Questions(repo.GetQuestions(10,582));
             // the current question being asked is the first one recieved
             self.CurrentQuestion = ko.observable(self.Questions()[0]);
-            // 
+            
+            //IGNORE THIS CODE//
+            // letters is... all the in the answer (including duplicates)
+            //  in sequential order 
             self.Letters = ko.observable(GetAnswerLetters());
             self.Answer = ko.observableArray(self.Letters());
             self.ResetUserAnswer();
