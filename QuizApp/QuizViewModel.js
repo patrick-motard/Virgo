@@ -106,7 +106,6 @@ define(['ko','jquery', 'QuestionModel', 'CategoryModel', 'QuizRepository'], func
                 }
             }
         };
-        
 
         self.AnswerComplete = ko.computed(function(){
             var i, observ;
@@ -115,10 +114,10 @@ define(['ko','jquery', 'QuestionModel', 'CategoryModel', 'QuizRepository'], func
                 console.log(observ);
                 if(observ() === "_"){return false;}
             }
-            self.CurrentScore(self.CurrentScore() + self.Value());
             return true;
         }, self);
         
+
         self.NextQuestion = function(){
             
             if(self.CurrentIndex() < self.Questions().length - 1){
@@ -132,6 +131,17 @@ define(['ko','jquery', 'QuestionModel', 'CategoryModel', 'QuizRepository'], func
                 self.Value(self.CurrentQuestion().value);
             }
         };
+
+        self.NextGame = ko.computed(function(){
+            if(self.AnswerComplete()){
+                self.CurrentScore(self.CurrentScore() + self.Value());
+                self.NextQuestion();
+            }
+        });
+
+
+        
+
 
         // init is run on page load
         // it sets needed intial values
