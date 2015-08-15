@@ -1,0 +1,29 @@
+{
+  "name": "Virgo",
+  "version": "0.0.0",
+  "homepage": "https://github.com/patrick-motard/Virgo",
+  "authors": [
+    "Patrick Motard <pmotard@idtdna.com>"
+  ],
+  "description": "quiz application",
+  "main": "client\\index.html",
+  "moduleType": [
+    "amd",
+    "node"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.5",
+    "knockoutjs": "~3.3.0",
+    "require": "*",
+    "text": "~2.0.14",
+    "underscore": "~1.8.3"
+  }
+}
