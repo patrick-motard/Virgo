@@ -63,3 +63,6 @@ p, div {
 .row{
     border: 1px solid black;
 }
+.answerTile {
+    background-color: #CCE6FF;
+}

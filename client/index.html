@@ -64,13 +64,12 @@
                     <div class="col-xs-12" style="height:100%;">
                         <!-- USER ANSWER -->
                         <h4>User Answer</h4>
-                        <div>
-                        <span style="border:1px solid black; font-size:20px; text-size:15px; width:25px; height:40px; display:inline-block; margin: 2px;" >k</span></div>
                         <!--ko foreach: UserAnswer -->
-                            <div style="float:left;"><span style="border:1px solid black; font-size:20px; text-size:15px; width:25px; height:40px; display:inline-block; margin: 2px;" 
-                                data-bind="text: $data, style: {'background-color' : $data === '_' ? '#CCE6FF' : 'white'}">
-                            </span></div>
+                            <span style="border:1px solid black; font-size:20px; text-size:15px; width:25px; height:40px; display:inline-block; margin: 2px;" 
+                                data-bind="text: $data, css: { answerTile: $data === '_' } {'background-color' : $data === '_' ?  ">
+                            </span>
                         <!--/ko-->
+                        </span>
                         <!-- END USER ANSWER-->
                     </div>
                 </div>
@@ -104,28 +103,29 @@
                 <!---->
                 <h4>Score</h4>
                 <span data-bind="text: CurrentScore()"></span>
-                <br/>
-                <button>Play Again</button>
+                <div class="row">
+                    <button class="btn btn-primary" data-bind="click: function(){ NewGame()}">Play Again</button>
+                </div>
             </div>
             <!--END RIGHT MAIN WINDOW-->
         </div>
         <!-- YOU LOSE MODAL -->
-        <div class="modal fade" id="loss" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel">You lose</h4>
-                    </div>
-                    <div class="modal-body">
-                        <h3>Better Luck Next Time</h3>
-                    </div>
-                    <div class="modal-footer">
+        <!--<div class="modal fade" id="loss" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">-->
+        <!--    <div class="modal-dialog">-->
+        <!--        <div class="modal-content">-->
+        <!--            <div class="modal-header">-->
+        <!--                <h4 class="modal-title" id="myModalLabel">You lose</h4>-->
+        <!--            </div>-->
+        <!--            <div class="modal-body">-->
+        <!--                <h3>Better Luck Next Time</h3>-->
+        <!--            </div>-->
+        <!--            <div class="modal-footer">-->
                         <!-- note: data-bind click: StartGame isnt working. I'm thinking binding isn't working because this part of the dom cant be accessed when binding is done... not sure.-->
-                        <button type="button" class="btn btn-default" data-dismiss="modal" data-bind="click: StartGame">Try Again</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <!--                <button type="button" class="btn btn-default" data-dismiss="modal" data-bind="click: StartGame">Try Again</button>-->
+        <!--            </div>-->
+        <!--        </div>-->
+        <!--    </div>-->
+        <!--</div>-->
         <!-- END YOU LOSE MODAL -->
     </div>
 	<!--REQUIREJS ENTRY POINT-->
