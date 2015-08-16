@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Quiz App</title>
+	<title>Virgo</title>
 	<link rel="stylesheet" type="text/css" href="../bower_components/bootstrap/dist/css/bootstrap.css"/>
 	<link rel="stylesheet" type="text/css" href="../bower_components/bootstrap/dist/css/bootstrap-theme.css"/>
 	<link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
@@ -12,17 +12,17 @@
 <body>
     <div id="main" class="container">
         <div class="row">
+            <!--LEFT MAIN WINDOW-->
             <div class="col-xs-10" style="height:500px; border:1px solid black; padding:0;">
                 <!--TIME-QUESTION-CHANCES PARENT PANEL-->
                 <div class="row" style="height:100px; margin:0;">
-                    
                     <!-- TIME PANEL-->
                     <!--<div class="col-sm-2" style="border:1px solid black; height:100%" >-->
                     <div class="col-sm-2">
-                        <!--<div data-bind='component: {-->
-                        <!--    name: "timer-component",-->
-                        <!--    params: { TimeRemaining: TimeRemaining, Chances: Chances }}'>-->
-                        <!--</div>  -->
+                        <div data-bind='component: {
+                            name: "timer-component",
+                            params: { TimeRemaining: TimeRemaining, Chances: Chances }}'>
+                        </div>  
                     </div>
                     <!--</div>-->
                     <!-- END TIME PANEL -->
@@ -30,7 +30,10 @@
                     
                     <!-- QUESTION PANEL-->
                     <div class="col-sm-8" style="border:1px solid black; height:100%" >
-                        <h4>Current Question</h4>
+                        <h4>Current Question 
+                            <span data-bind="text:CurrentQuestion().value"></span>
+                            <span>points</span>
+                        </h4>
                         <span data-bind="text: CurrentQuestion().question()"></span>
                     </div>
                     <!-- END QUESTION PANEL -->
@@ -45,92 +48,66 @@
                     
                 </div>
                 <!-- END TIME-QUESTION-CHANCES PARENT PANEL-->
+                
+                <!--GUESSED LETTERS PANEL-->
+                <div style="height:50px; margin:0;" class="row">
+                    <div class="col-sm-12" style="border:1px solid black; height:100%">
+                        <!--ko foreach: GuessedLetters -->
+                            <button type="button" style="height:80%" class="btn btn-primary" data-bind="text: $data"></button>
+                        <!--/ko-->
+                    </div>
+                </div>
+                <!--END GUESSED LETTERS PANEL-->
+               
+                <!--USER ANSWER PARENT PANEL-->
                 <div class="row" style="height:150px; margin:0;">
-                    <div class="col-xs-12" style="height:300px"></div>
+                    <div class="col-xs-12" style="height:100%;">
+                        <!-- USER ANSWER -->
+                        <h4>User Answer</h4>
+                        <div>
+                        <span style="border:1px solid black; font-size:20px; text-size:15px; width:25px; height:40px; display:inline-block; margin: 2px;" >k</span></div>
+                        <!--ko foreach: UserAnswer -->
+                            <div style="float:left;"><span style="border:1px solid black; font-size:20px; text-size:15px; width:25px; height:40px; display:inline-block; margin: 2px;" 
+                                data-bind="text: $data, style: {'background-color' : $data === '_' ? '#CCE6FF' : 'white'}">
+                            </span></div>
+                        <!--/ko-->
+                        <!-- END USER ANSWER-->
+                    </div>
                 </div>
-                                <div class="row" style="height:250px; margin:0;">
-                    <div class="col-xs-12" style="height:300px"></div>
+                <!--END USER ANSWER PARENT PANEL-->
+                    
+                <!--LETTER BANK PARENT PANEL-->
+                <div class="row" style="height:200px; margin:0;">
+                    <div class="col-xs-12" style="height:300px">
+                        <h4>Guess a letter</h4>
+                     <!--ko foreach: chars -->
+                        <button type="button" class="btn btn-primary" data-bind="text: $data, click: function(){ $parent.GuessLetter($data)}"> </button>
+                     <!--/ko-->
+                    </div>
                 </div>
-            </div>
-            <div class="col-xs-2" style="height:500px; border:1px solid black;">
-                <h4>Top Score:  </h4><span>500</span>
-                <h4>Score:  </h4><span>200</span>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-12">
-                <h1>Project Virgo</h1>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-4">
-               <h3>Current Score</h3>
-               <span data-bind="text: CurrentScore()"></span>
-            </div>
-            <div class="col-xs-4">
-                    <h3>Current Category</h3>
-                    <span data-bind="text: CurrentQuestion().category().title"></span>
-            </div>
-            <div class="col-xs-4">
-                <h3>High Score</h3>
-                <span data-bind="text: HighScore()"></span>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-xs-2">
-                <div data-bind='component: {
-                    name: "timer-component",
-                    params: { TimeRemaining: TimeRemaining, Chances: Chances }}'>
-                </div>  
-            </div>
-            <div class="col-xs-8">
-
-            </div>
-            <div class="col-xs-2">
-                <h3>Points</h3>
-                <span data-bind="text: CurrentQuestion().value"></span>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-2"></div>
-            <div class="col-md-8">
-                <!--<h3>Answer</h3>-->
-                <!--ko foreach: Answer -->
-                <!--    <span style="border:1px solid black; text-size:15px; width:10px; display:inline-block; margin: 2px;" data-bind="text: $data" style="font-size:20px; width:8px"></span>-->
-                <!--/ko-->
                 
-                <!-- USER ANSWER -->
-                <h3>User Answer</h3>
-                <!--ko foreach: UserAnswer -->
-                    <span style="border:1px solid black; font-size:20px; text-size:15px; width:30px; height:40px; display:inline-block; margin: 2px;" 
-                        data-bind="text: $data, style: {'background-color' : $data === '_' ? 'green' : 'white'}">
-                    </span>
-                <!--/ko-->
-                <!-- END USER ANSWER-->
+                <!--END LETTER BANK & GEUSED LETTERS PARENT PANEL-->
             </div>
-            <div class="col-md-2"></div>
-        </div>
-        
-        <div class="row">
-            <!-- WORD BANK -->
-            <div class="col-xs-6" >
-                
-                <h3>Word Bank</h3>
-                 <!--ko foreach: chars -->
-                    <button type="button" class="btn btn-primary" data-bind="text: $data, click: function(){ $parent.GuessLetter($data)}"> </button>
-                 <!--/ko-->
-            </div>
-            <!-- END WORD BANK-->
+            <!--END LEFT MAIN WINDOW-->
             
-            <!-- INCORRECT GUESSES WINDOW -->
-            <div class="col-xs-6">
-                 <h3 style="width:100%">Incorrect Guesses</h3>
-                 <!--ko foreach: GuessedLetters -->
-                    <button type="button" class="btn btn-primary" data-bind="text: $data"> </button>
-                 <!--/ko-->
+            <!--RIGHT MAIN WINDOW-->
+            <div class="col-xs-2" style="height:500px; border:1px solid black;">
+                <!--TOP SCORE-->
+                <div class="row" style="margin:0; padding:0;">
+                    <div class="col-sm-12" style="margin:0">
+                        <h4>Top Score</h4>
+                        <span>0</span>  
+                    </div>
+                </div>
+                <!--END TOP SCORE-->
+                
+                <!---->
+                <h4>Score</h4>
+                <span data-bind="text: CurrentScore()"></span>
+                <br/>
+                <button>Play Again</button>
             </div>
-            <!-- END INCORRECT GUESSES WINDOW -->
+            <!--END RIGHT MAIN WINDOW-->
         </div>
         <!-- YOU LOSE MODAL -->
         <div class="modal fade" id="loss" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">

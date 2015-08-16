@@ -43,7 +43,7 @@ define(['ko','jquery', 'QuestionModel', 'CategoryModel', 'QuizRepository'], func
         self.chars = ko.observableArray(alphabet);
         self.wrongGuesses = ko.observableArray([]);
         
-        self.TimeRemaining = ko.observable(3);
+        self.TimeRemaining = ko.observable(500);
         self.ToggleIsGuessed = function (sender) {
             sender.IsGuessed(!self.IsGuessed());
         };
