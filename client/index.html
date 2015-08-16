@@ -12,9 +12,54 @@
 <body>
     <div id="main" class="container">
         <div class="row">
+            <div class="col-xs-10" style="height:500px; border:1px solid black; padding:0;">
+                <!--TIME-QUESTION-CHANCES PARENT PANEL-->
+                <div class="row" style="height:100px; margin:0;">
+                    
+                    <!-- TIME PANEL-->
+                    <!--<div class="col-sm-2" style="border:1px solid black; height:100%" >-->
+                    <div class="col-sm-2">
+                        <!--<div data-bind='component: {-->
+                        <!--    name: "timer-component",-->
+                        <!--    params: { TimeRemaining: TimeRemaining, Chances: Chances }}'>-->
+                        <!--</div>  -->
+                    </div>
+                    <!--</div>-->
+                    <!-- END TIME PANEL -->
+                    
+                    
+                    <!-- QUESTION PANEL-->
+                    <div class="col-sm-8" style="border:1px solid black; height:100%" >
+                        <h4>Current Question</h4>
+                        <span data-bind="text: CurrentQuestion().question()"></span>
+                    </div>
+                    <!-- END QUESTION PANEL -->
+                    
+                    
+                    <!--CHANCES PANEL-->
+                    <div class="col-sm-2" style="border:1px solid black; height:100%" >
+                        <h4>Chances</h4>
+                        <span data-bind="text: Chances"></span>
+                    </div>
+                    <!--END CHANCES PANEL-->
+                    
+                </div>
+                <!-- END TIME-QUESTION-CHANCES PARENT PANEL-->
+                <div class="row" style="height:150px; margin:0;">
+                    <div class="col-xs-12" style="height:300px"></div>
+                </div>
+                                <div class="row" style="height:250px; margin:0;">
+                    <div class="col-xs-12" style="height:300px"></div>
+                </div>
+            </div>
+            <div class="col-xs-2" style="height:500px; border:1px solid black;">
+                <h4>Top Score:  </h4><span>500</span>
+                <h4>Score:  </h4><span>200</span>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-sm-12">
                 <h1>Project Virgo</h1>
-                <button data-bind="click: NextQuestion, visible: AnswerComplete(), text:AnswerComplete()">Next Question</button>
             </div>
         </div>
         <div class="row">
@@ -31,9 +76,7 @@
                 <span data-bind="text: HighScore()"></span>
             </div>
         </div>
-        <div class="row">
-            
-        </div>
+
         <div class="row">
             <div class="col-xs-2">
                 <div data-bind='component: {
@@ -42,8 +85,7 @@
                 </div>  
             </div>
             <div class="col-xs-8">
-                <h3>Current Question</h3>
-                <span data-bind="text: CurrentQuestion().question()"></span>
+
             </div>
             <div class="col-xs-2">
                 <h3>Points</h3>
@@ -57,48 +99,58 @@
                 <!--ko foreach: Answer -->
                 <!--    <span style="border:1px solid black; text-size:15px; width:10px; display:inline-block; margin: 2px;" data-bind="text: $data" style="font-size:20px; width:8px"></span>-->
                 <!--/ko-->
+                
+                <!-- USER ANSWER -->
                 <h3>User Answer</h3>
                 <!--ko foreach: UserAnswer -->
                     <span style="border:1px solid black; font-size:20px; text-size:15px; width:30px; height:40px; display:inline-block; margin: 2px;" 
                         data-bind="text: $data, style: {'background-color' : $data === '_' ? 'green' : 'white'}">
                     </span>
                 <!--/ko-->
+                <!-- END USER ANSWER-->
             </div>
             <div class="col-md-2"></div>
         </div>
+        
         <div class="row">
-            
+            <!-- WORD BANK -->
             <div class="col-xs-6" >
-                <h1 data-bind="text: Chances"></h1>
+                
                 <h3>Word Bank</h3>
                  <!--ko foreach: chars -->
                     <button type="button" class="btn btn-primary" data-bind="text: $data, click: function(){ $parent.GuessLetter($data)}"> </button>
                  <!--/ko-->
             </div>
+            <!-- END WORD BANK-->
+            
+            <!-- INCORRECT GUESSES WINDOW -->
             <div class="col-xs-6">
                  <h3 style="width:100%">Incorrect Guesses</h3>
                  <!--ko foreach: GuessedLetters -->
                     <button type="button" class="btn btn-primary" data-bind="text: $data"> </button>
                  <!--/ko-->
             </div>
-            
+            <!-- END INCORRECT GUESSES WINDOW -->
         </div>
-    </div>
-    <div class="modal fade" id="loss" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-            <h4 class="modal-title" id="myModalLabel">You lose</h4>
+        <!-- YOU LOSE MODAL -->
+        <div class="modal fade" id="loss" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel">You lose</h4>
+                    </div>
+                    <div class="modal-body">
+                        <h3>Better Luck Next Time</h3>
+                    </div>
+                    <div class="modal-footer">
+                        <!-- note: data-bind click: StartGame isnt working. I'm thinking binding isn't working because this part of the dom cant be accessed when binding is done... not sure.-->
+                        <button type="button" class="btn btn-default" data-dismiss="modal" data-bind="click: StartGame">Try Again</button>
+                    </div>
+                </div>
             </div>
-            <div class="modal-body">
-                <h3>Better Luck Next Time</h3>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Try Again</button>
         </div>
+        <!-- END YOU LOSE MODAL -->
     </div>
-  </div>
-</div>
 	<!--REQUIREJS ENTRY POINT-->
     <script data-main="../QuizApp/QuizMain" src="../node_modules/requirejs/require.js"></script>
 </body>

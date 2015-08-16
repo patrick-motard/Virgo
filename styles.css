@@ -60,4 +60,6 @@ h1 {
 p, div {
     font-family: 'Ubuntu', sans-serif;
 }
-
+.row{
+    border: 1px solid black;
+}

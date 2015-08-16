@@ -21,23 +21,21 @@ define(['ko','jquery', 'QuestionModel', 'CategoryModel', 'QuizRepository'], func
                 self.Questions(repo.GetQuestions(10,582));
                 // the current question being asked is the first one recieved
                 self.CurrentQuestion = ko.observable(self.Questions()[0]);
-                // 
-                self.Value(repo.value);
+
                 self.Letters = ko.observable(GetAnswerLetters());
                 self.Answer = ko.observableArray(self.Letters());
                 self.ResetUserAnswer();
                 self.Chances(6);
                 self.CurrentScore(0);
                 self.Value(self.CurrentQuestion().value);
-        }
+        };
 
         self.GameOver = ko.computed(function(){
             if(self.Chances() === 0){
                 $('#loss').modal('show');
                 if(self.HighScore() < self.CurrentScore()){
-                self.HighScore(self.CurrentScore());
+                    self.HighScore(self.CurrentScore());
                 }
-                self.StartGame();//need to run this on modal close
         }}, self);
 
         
