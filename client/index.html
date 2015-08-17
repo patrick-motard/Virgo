@@ -11,7 +11,17 @@
 </head>
 <body>
     <div id="main" class="container">
-        <div class="row">
+        <!--GAME OVER WINDOW-->
+        <div class="row" data-bind="visible: GameOver()" style="display:none; height:500px;">
+            <div class="col-sm-12">
+                <h1>Game Over</h1>
+                <button style="width:50%;" class="btn btn-primary" data-bind="click: function(){ StartGame()}, visible: GameOver()">Play Again</button>
+            </div>
+        </div>
+        <!--END GAME OVER WINDOW-->
+        
+        <!--GAME WINDOW-->
+        <div class="row" data-bind="visible: !GameOver()">
             <!--LEFT MAIN WINDOW-->
             <div class="col-xs-10" style="height:500px; border:1px solid black; padding:0;">
                 <!--TIME-QUESTION-CHANCES PARENT PANEL-->
@@ -42,7 +52,7 @@
                     <!--CHANCES PANEL-->
                     <div class="col-sm-2" style="border:1px solid black; height:100%" >
                         <h4>Chances</h4>
-                        <span data-bind="text: Chances"></span>
+                        <span data-bind="text: Chances" style="font-size:2em;"></span>
                     </div>
                     <!--END CHANCES PANEL-->
                     
@@ -53,7 +63,7 @@
                 <div class="row" style="height:150px; margin:0;">
                     <div class="col-xs-12" style="height:100%;">
                         <!-- USER ANSWER -->
-                        <div class="row" style="border:none;">
+                        <div class="row" style="border:none; margin:0">
                             <div class="col-sm-12">
                                 <h4>Answer</h4>
                             </div>
@@ -72,10 +82,10 @@
                         <!-- END USER ANSWER-->
                     </div>
                 </div>
-                <!--END USER ANSWER PARENT PANEL-->
+                <!--END USER ANSWER PPARENT PANEL-->
                     
                 <!--LETTER BANK PARENT PANEL-->
-                <div class="row" style="height:200px; margin:0;">
+                <div class="row" style="height:150px; margin:0;">
                     <div class="col-xs-12" style="height:100%">
                         <h4>Guess a letter</h4>
                      <!--ko foreach: chars -->
@@ -83,13 +93,14 @@
                      <!--/ko-->
                     </div>
                 </div>
-                <!--END LETTER BANK & GEUSED LETTERS PARENT PANEL-->
+                <!--END LETTER BANK PARENT PANEL-->
                 
                 <!--GUESSED LETTERS PANEL-->
-                <div class="row" style="height:50px; margin:0;">
+                <div class="row" style="height:100px; margin:0;">
                     <div class="col-sm-12" style="border:1px solid black;height:100%;">
+                        <h4>Guessed Letters</h4>
                         <!--ko foreach: GuessedLetters -->
-                            <button type="button" style="height:80%" class="btn btn-primary" data-bind="text: $data"></button>
+                            <button type="button" style="height:2em;" class="btn btn-primary" data-bind="text: $data"></button>
                         <!--/ko-->
                     </div>
                 </div>
@@ -115,11 +126,11 @@
                 
                 
                 <!--PLAY AGAIN BUTTON-->
-                <div class="row" style="border:none;">
-                    <div class="col-xs-12">
-                        <button style="width:100%" class="btn btn-primary" data-bind="click: function(){ StartGame()}">Play Again</button>
-                    </div>
-                </div>
+                <!--<div class="row" style="border:none;">-->
+                <!--    <div class="col-xs-12">-->
+                <!--        <button style="width:100%" class="btn btn-primary" data-bind="click: function(){ StartGame()}, visible: GameOver()">Play Again</button>-->
+                <!--    </div>-->
+                <!--</div>-->
                 <!--END PLAY AGAIN BUTTON-->
                 
                 <!-- NEXT QUESTION BUTTON -->
@@ -132,6 +143,10 @@
             </div>
             <!--END RIGHT MAIN WINDOW-->
         </div>
+        <!--END GAME WINDOW-->
+        
+        
+        
         <!-- YOU LOSE MODAL -->
         <!--<div class="modal fade" id="loss" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">-->
         <!--    <div class="modal-dialog">-->

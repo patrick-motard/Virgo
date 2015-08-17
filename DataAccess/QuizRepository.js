@@ -1038,7 +1038,7 @@ define(["ko", "jquery", 'QuestionModel', 'CategoryModel'], function(ko, $, Quest
         },
         {
         id: 14982,
-        answer: "<i>The Simpsons</i>",
+        answer: "The Simpsons",
         question: "In 1990 & 1991 this Fox show was named the outstanding animated prime-time series",
         value: 200,
         airdate: "1995-09-04T12:00:00.000Z",

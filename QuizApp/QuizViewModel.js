@@ -14,16 +14,23 @@ define(['ko','jquery', 'QuestionModel', 'CategoryModel', 'QuizRepository'], func
         self.Value = ko.observable(0);
 
 
-
+        function getRandomArbitrary(min, max) {
+            return Math.floor(Math.random() * (max - min) + min);
+        }
+        
+        self.Restart = function(){
+            
+        };
         
         self.StartGame = function(){
              // intialize the DAL (data access layer)
-                var repo = new QuizRepository();
+                var repo = new QuizRepository(),
+                randNum;
                 // get the questions from the DAL
-                self.Questions(repo.GetQuestions(10,582));
+                self.Questions(repo.GetQuestions());
                 // the current question being asked is the first one recieved
-                var randomNum = Math.floor((Math.random() * 10));
-                self.CurrentQuestion = ko.observable(self.Questions()[randomNum]);
+                randNum = getRandomArbitrary(0, self.Questions().length);
+                self.CurrentQuestion = ko.observable(self.Questions()[randNum]);
 
                 self.Letters = ko.observable(GetAnswerLetters());
                 self.Answer = ko.observableArray(self.Letters());
@@ -41,7 +48,10 @@ define(['ko','jquery', 'QuestionModel', 'CategoryModel', 'QuizRepository'], func
         //         }
         // }}, self);
         self.GameOver = ko.computed(function(){
-            
+            if(self.Chances() === 0)
+            { return true; }
+            else 
+            { return false }
         }, self);
         
         
