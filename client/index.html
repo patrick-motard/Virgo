@@ -15,7 +15,7 @@
         <div class="row" data-bind="visible: GameOver()" style="display:none; height:500px;">
             <div class="col-sm-12">
                 <h1>Game Over</h1>
-                <button style="width:50%;" class="btn btn-primary" data-bind="click: function(){ StartGame()}, visible: GameOver()">Play Again</button>
+                <button style="width:50%;" class="btn btn-primary" data-bind="click: function(){ Restart()}, visible: GameOver()">Play Again</button>
             </div>
         </div>
         <!--END GAME OVER WINDOW-->
@@ -98,7 +98,7 @@
                 <!--GUESSED LETTERS PANEL-->
                 <div class="row" style="height:100px; margin:0;">
                     <div class="col-sm-12" style="border:1px solid black;height:100%;">
-                        <h4>Guessed Letters</h4>
+                        <h4>Incorrect Guesses</h4>
                         <!--ko foreach: GuessedLetters -->
                             <button type="button" style="height:2em;" class="btn btn-primary" data-bind="text: $data"></button>
                         <!--/ko-->
