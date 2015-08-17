@@ -65,4 +65,20 @@ p, div {
 }
 .answerTile {
     background-color: #CCE6FF;
+    border: 1px solid black; 
+    padding-top:8px;
+    font-size:20px; 
+    width:30px; 
+    height:40px; 
+    vertical-align:top;
+    display:inline-block; 
+    margin: 2px;
+}
+.spaceTile {
+    background-color: white;
+    font-size:20px; 
+    width:25px; 
+    height:40px; 
+    display:inline-block; 
+    margin: 2px;
 }

@@ -30,7 +30,7 @@
                     
                     <!-- QUESTION PANEL-->
                     <div class="col-sm-8" style="border:1px solid black; height:100%" >
-                        <h4>Current Question 
+                        <h4>Current Question - 
                             <span data-bind="text:CurrentQuestion().value"></span>
                             <span>points</span>
                         </h4>
@@ -48,28 +48,27 @@
                     
                 </div>
                 <!-- END TIME-QUESTION-CHANCES PARENT PANEL-->
-                
-                <!--GUESSED LETTERS PANEL-->
-                <div style="height:50px; margin:0;" class="row">
-                    <div class="col-sm-12" style="border:1px solid black; height:100%">
-                        <!--ko foreach: GuessedLetters -->
-                            <button type="button" style="height:80%" class="btn btn-primary" data-bind="text: $data"></button>
-                        <!--/ko-->
-                    </div>
-                </div>
-                <!--END GUESSED LETTERS PANEL-->
                
                 <!--USER ANSWER PARENT PANEL-->
                 <div class="row" style="height:150px; margin:0;">
                     <div class="col-xs-12" style="height:100%;">
                         <!-- USER ANSWER -->
-                        <h4>User Answer</h4>
-                        <!--ko foreach: UserAnswer -->
-                            <span style="border:1px solid black; font-size:20px; text-size:15px; width:25px; height:40px; display:inline-block; margin: 2px;" 
-                                data-bind="text: $data, css: { answerTile: $data === '_' } {'background-color' : $data === '_' ?  ">
-                            </span>
-                        <!--/ko-->
-                        </span>
+                        <div class="row" style="border:none;">
+                            <div class="col-sm-12">
+                                <h4>Answer</h4>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top:0; border: none">
+                            <div class="col-sm-12">
+                                <!--ko foreach: UserAnswer -->
+                                    <!--<span -->
+                                    <!--    data-bind="text: $data, -->
+                                    <!--               css: { answerTile: $root.AnswerTileCssSwitch($data) }">-->
+                                    <!--</span>-->
+                                    <span data-bind="text: $data" class="answerTile"></span>
+                                <!--/ko-->
+                            </div>
+                        </div>
                         <!-- END USER ANSWER-->
                     </div>
                 </div>
@@ -77,22 +76,32 @@
                     
                 <!--LETTER BANK PARENT PANEL-->
                 <div class="row" style="height:200px; margin:0;">
-                    <div class="col-xs-12" style="height:300px">
+                    <div class="col-xs-12" style="height:100%">
                         <h4>Guess a letter</h4>
                      <!--ko foreach: chars -->
                         <button type="button" class="btn btn-primary" data-bind="text: $data, click: function(){ $parent.GuessLetter($data)}"> </button>
                      <!--/ko-->
                     </div>
                 </div>
-                
                 <!--END LETTER BANK & GEUSED LETTERS PARENT PANEL-->
+                
+                <!--GUESSED LETTERS PANEL-->
+                <div class="row" style="height:50px; margin:0;">
+                    <div class="col-sm-12" style="border:1px solid black;height:100%;">
+                        <!--ko foreach: GuessedLetters -->
+                            <button type="button" style="height:80%" class="btn btn-primary" data-bind="text: $data"></button>
+                        <!--/ko-->
+                    </div>
+                </div>
+                <!--END GUESSED LETTERS PANEL-->
+                
             </div>
             <!--END LEFT MAIN WINDOW-->
             
             <!--RIGHT MAIN WINDOW-->
             <div class="col-xs-2" style="height:500px; border:1px solid black;">
                 <!--TOP SCORE-->
-                <div class="row" style="margin:0; padding:0;">
+                <div class="row" style="margin:0; padding:0; border:none;">
                     <div class="col-sm-12" style="margin:0">
                         <h4>Top Score</h4>
                         <span>0</span>  
@@ -103,9 +112,23 @@
                 <!---->
                 <h4>Score</h4>
                 <span data-bind="text: CurrentScore()"></span>
-                <div class="row">
-                    <button class="btn btn-primary" data-bind="click: function(){ NewGame()}">Play Again</button>
+                
+                
+                <!--PLAY AGAIN BUTTON-->
+                <div class="row" style="border:none;">
+                    <div class="col-xs-12">
+                        <button style="width:100%" class="btn btn-primary" data-bind="click: function(){ StartGame()}">Play Again</button>
+                    </div>
                 </div>
+                <!--END PLAY AGAIN BUTTON-->
+                
+                <!-- NEXT QUESTION BUTTON -->
+                <div class="row" style="border:none;">
+                    <div class="col-xs-12">
+                        <button class="btn btn-success" data-bind="click: function(){ NextQuestion()}, visible: AnswerComplete">Next</button>
+                    </div>
+                </div>
+                <!-- END NEXT QUESTION BUTTON -->
             </div>
             <!--END RIGHT MAIN WINDOW-->
         </div>
