@@ -28,7 +28,8 @@ define(['ko','jquery', 'QuestionModel', 'CategoryModel', 'QuizRepository'], func
             self.Answer(self.Letters);
             self.ResetUserAnswer();
             self.GuessedLetters.removeAll();
-            
+            self.chars.removeAll();
+            self.chars(self.alphabet());
         };
         
         self.StartGame = function(){
@@ -56,8 +57,8 @@ define(['ko','jquery', 'QuestionModel', 'CategoryModel', 'QuizRepository'], func
             { return false }
         }, self);
         
-        var alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
-        self.chars = ko.observableArray(alphabet);
+        self.alphabet = function(){return "abcdefghijklmnopqrstuvwxyz".split("");};
+        self.chars = ko.observableArray(self.alphabet());
         self.wrongGuesses = ko.observableArray([]);
         
         self.TimeRemaining = ko.observable(500);
