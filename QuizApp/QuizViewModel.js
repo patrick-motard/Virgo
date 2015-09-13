@@ -13,7 +13,6 @@ define(['ko','jquery', 'QuestionModel', 'CategoryModel', 'QuizRepository'], func
         self.Chances = ko.observable(6);
         self.Answer = [];
 
-
         function getRandomArbitrary(min, max) {
             return Math.floor(Math.random() * (max - min) + min);
         }
@@ -121,6 +120,7 @@ define(['ko','jquery', 'QuestionModel', 'CategoryModel', 'QuizRepository'], func
                     self.UserAnswer().push(ko.observable("_"));
                 }
             }
+            self.UserAnswer.valueHasMutated();
         };
 
         self.AnswerComplete = ko.computed(function(){

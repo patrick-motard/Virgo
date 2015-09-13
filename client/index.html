@@ -71,10 +71,6 @@
                         <div class="row" style="margin-top:0; border: none">
                             <div class="col-sm-12">
                                 <!--ko foreach: UserAnswer -->
-                                    <!--<span -->
-                                    <!--    data-bind="text: $data, -->
-                                    <!--               css: { answerTile: $root.AnswerTileCssSwitch($data) }">-->
-                                    <!--</span>-->
                                     <span data-bind="text: $data" class="answerTile"></span>
                                 <!--/ko-->
                             </div>
@@ -140,6 +136,23 @@
                     </div>
                 </div>
                 <!-- END NEXT QUESTION BUTTON -->
+                
+                <!-- TESTING OUT KO FEATURES -->
+                <!--<div class="row">-->
+                <!--    <div class="col-xs-12">-->
+                <!--        <ul>-->
+                        <!-- ko foreach: myNumbers -->
+                <!--            <li data-bind="text: $data"></li>-->
+                        <!-- /ko -->    
+                <!--        </ul>-->
+                <!--    </div>-->
+                <!--</div>-->
+                <!--<div class="row">-->
+                <!--    <div class="col-xs-12">-->
+                <!--        <button class="btn btn-success" data-bind="click: function(){resetNumbers()}">reset</button>-->
+                <!--    </div>-->
+                <!--</div>-->
+                <!-- END TESTING OUT KO FEATURES -->
             </div>
             <!--END RIGHT MAIN WINDOW-->
         </div>
