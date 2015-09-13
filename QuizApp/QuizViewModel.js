@@ -40,7 +40,9 @@ define(['ko','jquery', 'QuestionModel', 'CategoryModel', 'QuizRepository'], func
                 // choose a random number in the range of how many questions there are
                 randNum = getRandomArbitrary(0, self.Questions().length);
                 // get that question from questions
-                self.CurrentQuestion = ko.observable(self.Questions()[randNum]);
+                self.Questions()[0].answer = "ab";
+                // self.CurrentQuestion = ko.observable(self.Questions()[randNum]);
+                self.CurrentQuestion = ko.observable(self.Questions()[0]);
                 // 
                 self.Letters = GetAnswerLetters();
                 self.Answer = ko.observableArray(self.Letters);
@@ -90,7 +92,7 @@ define(['ko','jquery', 'QuestionModel', 'CategoryModel', 'QuizRepository'], func
                 self.Chances(self.Chances() - 1); 
             }
             // give the user more time to guess
-            self.TimeRemaining(30); //we have it set to 3 other places. Should use a variable in all places.
+            self.TimeRemaining(30); //we have it set to 3 other placejs. Should use a variable in all places.
         };
         
         // GetLetters returns all of the letters in the current answer
@@ -108,7 +110,7 @@ define(['ko','jquery', 'QuestionModel', 'CategoryModel', 'QuizRepository'], func
         self.ResetUserAnswer = function(){
             // clear the users answer
             self.UserAnswer.removeAll();
-            // loop through the letters in the real answer
+            //loop through the letters in the real answer
             for(var i = 0; i < self.Answer().length; i++){
                 // if the answer has a space
                 if(self.Answer()[i] === " "){
@@ -120,6 +122,10 @@ define(['ko','jquery', 'QuestionModel', 'CategoryModel', 'QuizRepository'], func
                     self.UserAnswer().push(ko.observable("_"));
                 }
             }
+            // var ans = "aaas";
+            // for(var i = 0; i < ans.length; i++){
+            //     self.UserAnswer().push(ko.observable("_"));
+            // }
             self.UserAnswer.valueHasMutated();
         };
 
@@ -128,7 +134,7 @@ define(['ko','jquery', 'QuestionModel', 'CategoryModel', 'QuizRepository'], func
             if(self.UserAnswer === undefined || self.UserAnswer().length === 0){return false}
             for(i = 0; i < self.UserAnswer().length; i++){
                 observ = self.UserAnswer()[i];
-                console.log(observ);
+                console.log(observ());
                 if(observ() === "_"){return false;}
             }
             return true;
@@ -151,7 +157,7 @@ define(['ko','jquery', 'QuestionModel', 'CategoryModel', 'QuizRepository'], func
 
         self.NextGame = ko.computed(function(){
             if(self.AnswerComplete()){
-                self.CurrentScore(self.CurrentScore() + self.Value());
+                self.CurrentScore(self.CurrentScore() + self.CurrentQuestion().value);
                 self.NextQuestion();
             }
         });

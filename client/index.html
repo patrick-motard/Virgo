@@ -12,12 +12,20 @@
 <body>
     <div id="main" class="container">
         <!--GAME OVER WINDOW-->
-        <div class="row" data-bind="visible: GameOver()" style="display:none; height:500px;">
-            <div class="col-sm-12">
-                <h1>Game Over</h1>
-                <button style="width:50%;" class="btn btn-primary" data-bind="click: function(){ Restart()}, visible: GameOver()">Play Again</button>
+        <section data-bind="visible: GameOver()" style="display:none; height:500px;">
+            <div class="row"  >
+                <div class="col-sm-12">
+                    <h1>Game Over</h1>
+                    <button style="width:50%;" class="btn btn-primary" data-bind="click: function(){ Restart()}, visible: GameOver()">Play Again</button>
+                </div>
             </div>
-        </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <h1>The Correct Answer Was:</h1>
+                    <p data-bind="text: CurrentQuestion.answer"></p>
+                </div>
+            </div>
+        </section>
         <!--END GAME OVER WINDOW-->
         
         <!--GAME WINDOW-->
@@ -132,7 +140,7 @@
                 <!-- NEXT QUESTION BUTTON -->
                 <div class="row" style="border:none;">
                     <div class="col-xs-12">
-                        <button class="btn btn-success" data-bind="click: function(){ NextQuestion()}, visible: AnswerComplete">Next</button>
+                        <button style="display:none" class="btn btn-success" data-bind="click: function(){ NextQuestion()}, visible: AnswerComplete">Next</button>
                     </div>
                 </div>
                 <!-- END NEXT QUESTION BUTTON -->
@@ -141,9 +149,9 @@
                 <!--<div class="row">-->
                 <!--    <div class="col-xs-12">-->
                 <!--        <ul>-->
-                        <!-- ko foreach: myNumbers -->
+                      <!--  <!-- ko foreach: myNumbers -->  
                 <!--            <li data-bind="text: $data"></li>-->
-                        <!-- /ko -->    
+                     <!--   <!-- /ko --> 
                 <!--        </ul>-->
                 <!--    </div>-->
                 <!--</div>-->
