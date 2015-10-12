@@ -128,64 +128,20 @@
                 <h4>Score</h4>
                 <span data-bind="text: CurrentScore()"></span>
                 
-                
-                <!--PLAY AGAIN BUTTON-->
-                <!--<div class="row" style="border:none;">-->
-                <!--    <div class="col-xs-12">-->
-                <!--        <button style="width:100%" class="btn btn-primary" data-bind="click: function(){ StartGame()}, visible: GameOver()">Play Again</button>-->
-                <!--    </div>-->
-                <!--</div>-->
-                <!--END PLAY AGAIN BUTTON-->
-                
                 <!-- NEXT QUESTION BUTTON -->
-                <div class="row" style="border:none;">
+                <div class="row" style="border:none; display: none;" data-bind="visible: IsAnswerComplete()">
                     <div class="col-xs-12">
-                        <button style="display:none" class="btn btn-success" data-bind="click: function(){ NextQuestion()}, visible: AnswerComplete">Next</button>
+                        <h4>Ready for the next one?</h4>
+                        <button  class="btn btn-success" data-bind="click: function(){ NextQuestion()}">Let's go!</button>
                     </div>
                 </div>
                 <!-- END NEXT QUESTION BUTTON -->
                 
-                <!-- TESTING OUT KO FEATURES -->
-                <!--<div class="row">-->
-                <!--    <div class="col-xs-12">-->
-                <!--        <ul>-->
-                      <!--  <!-- ko foreach: myNumbers -->  
-                <!--            <li data-bind="text: $data"></li>-->
-                     <!--   <!-- /ko --> 
-                <!--        </ul>-->
-                <!--    </div>-->
-                <!--</div>-->
-                <!--<div class="row">-->
-                <!--    <div class="col-xs-12">-->
-                <!--        <button class="btn btn-success" data-bind="click: function(){resetNumbers()}">reset</button>-->
-                <!--    </div>-->
-                <!--</div>-->
-                <!-- END TESTING OUT KO FEATURES -->
             </div>
             <!--END RIGHT MAIN WINDOW-->
         </div>
         <!--END GAME WINDOW-->
-        
-        
-        
-        <!-- YOU LOSE MODAL -->
-        <!--<div class="modal fade" id="loss" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">-->
-        <!--    <div class="modal-dialog">-->
-        <!--        <div class="modal-content">-->
-        <!--            <div class="modal-header">-->
-        <!--                <h4 class="modal-title" id="myModalLabel">You lose</h4>-->
-        <!--            </div>-->
-        <!--            <div class="modal-body">-->
-        <!--                <h3>Better Luck Next Time</h3>-->
-        <!--            </div>-->
-        <!--            <div class="modal-footer">-->
-                        <!-- note: data-bind click: StartGame isnt working. I'm thinking binding isn't working because this part of the dom cant be accessed when binding is done... not sure.-->
-        <!--                <button type="button" class="btn btn-default" data-dismiss="modal" data-bind="click: StartGame">Try Again</button>-->
-        <!--            </div>-->
-        <!--        </div>-->
-        <!--    </div>-->
-        <!--</div>-->
-        <!-- END YOU LOSE MODAL -->
+
     </div>
 	<!--REQUIREJS ENTRY POINT-->
     <script data-main="../QuizApp/QuizMain" src="../node_modules/requirejs/require.js"></script>

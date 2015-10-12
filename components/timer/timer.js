@@ -6,7 +6,7 @@ define(['ko'], function(ko){
         
         var k;
         self.start = function(){
-        self.Counter(500);
+        self.Counter(60);
             k = setInterval(function(){
                 self.Counter(self.Counter() - 1);
                 if(self.Counter() === 0) {
